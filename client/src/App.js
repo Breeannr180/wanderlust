@@ -7,9 +7,12 @@ import React from "react";
 //   createHttpLink,
 // } from "@apollo/client";
 // import { setContext } from "@apollo/client/link/context";
+import Search from "./components/Wiki/Search";
 
 function App() {
-  return <></>;
+  return <>
+    <Search />
+  </>;
 }
 
 export default App;

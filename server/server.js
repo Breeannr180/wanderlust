@@ -14,7 +14,7 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
-const { getOpenTripMapData } = require('./routes/openTripMap');
+// const { getOpenTripMapData } = require('./routes/openTripMap');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -28,16 +28,16 @@ app.get('/', (req, res) => {
 });
 
 //OpenTrip route
-app.get('/api/opentripmap', async (req, res) => {
-  try {
-    const { query } = req.query;
-    const data = await getOpenTripMapData(query);
-    res.json(data);
-  } catch (error) {
-    console.error('Error handling OpenTripMap request:', error);
-    res.status(500).json({ error: 'Error handling OpenTripMap request' });
-  }
-});
+// app.get('/api/opentripmap', async (req, res) => {
+//   try {
+//     const { query } = req.query;
+//     const data = await getOpenTripMapData(query);
+//     res.json(data);
+//   } catch (error) {
+//     console.error('Error handling OpenTripMap request:', error);
+//     res.status(500).json({ error: 'Error handling OpenTripMap request' });
+//   }
+// });
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
