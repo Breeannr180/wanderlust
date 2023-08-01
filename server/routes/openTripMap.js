@@ -1,5 +1,6 @@
-const axios = require('axios');
-const APIkey = '5ae2e3f221c38a28845f05b6ea3ff1b8d0097fe37c7a818fa11a6e58';
+require("dotenv").config();
+const axios = require("axios");
+const APIkey = process.env.OPEN_TRIP_API_KEY;
 
 async function getOpenTripMapData(query) {
   try {
@@ -10,11 +11,10 @@ async function getOpenTripMapData(query) {
 
     return response.data;
   } catch (error) {
-    console.error('Error fetching OpenTripMap data:', error);
-    throw new Error('Error fetching OpenTripMap data');
+    console.error("Error fetching OpenTripMap data:", error);
+    throw new Error("Error fetching OpenTripMap data");
   }
 }
-
 
 async function getDestinationData(destinationName) {
   try {
@@ -39,18 +39,15 @@ async function getDestinationData(destinationName) {
         images: imagesData,
       };
     } else {
-      throw new Error('Destination not found');
+      throw new Error("Destination not found");
     }
   } catch (error) {
-    console.error('Error fetching destination data:', error);
-    throw new Error('Error fetching destination data');
+    console.error("Error fetching destination data:", error);
+    throw new Error("Error fetching destination data");
   }
 }
 
 module.exports = { getDestinationData };
-
-
-
 
 async function getOpenTripMapData(query) {
   try {
@@ -61,8 +58,8 @@ async function getOpenTripMapData(query) {
 
     return response.data;
   } catch (error) {
-    console.error('Error fetching OpenTripMap data:', error);
-    throw new Error('Error fetching OpenTripMap data');
+    console.error("Error fetching OpenTripMap data:", error);
+    throw new Error("Error fetching OpenTripMap data");
   }
 }
 
