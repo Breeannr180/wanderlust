@@ -1,10 +1,10 @@
 # Travel Wanderlust
 
-##Description
+## Description
 
 Travel Wanderlust is a comprehensive web application that serves as your ultimate travel destination guide. It provides users with valuable information about various travel destinations, including descriptions, images, activities, and essential details to make their travel planning a breeze.
 
-##Key Features
+## Key Features
 
 * Search Destinations: Users can search for their desired travel destinations using the search bar. The application fetches data from OpenTripMap API to provide detailed information about the destinations.
 * Destination Details: Each destination page displays a wealth of information about the location, such as its name, description, and a gallery of images that showcase the beauty of the place.
@@ -15,7 +15,7 @@ Travel Wanderlust is a comprehensive web application that serves as your ultimat
 ![Whiteboard](./client/public/images/server%20side.png)
 
 
-##Technologies
+## Technologies
 
 MERN Stack: TravelWiki is built using the MERN (MongoDB, Express.js, React, Node.js) stack, providing a powerful and efficient development environment.
 
