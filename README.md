@@ -6,14 +6,13 @@ Travel Wanderlust is a comprehensive web application that serves as your ultimat
 
 ## Key Features
 
-* Search Destinations: Users can search for their desired travel destinations using the search bar. The application fetches data from OpenTripMap API to provide detailed information about the destinations.
-* Destination Details: Each destination page displays a wealth of information about the location, such as its name, description, and a gallery of images that showcase the beauty of the place.
-* User Authentication: Travel Wanderlust includes user registration and login functionality, allowing users to create accounts and log in to access additional features or contribute to the platform.
+- Search Destinations: Users can search for their desired travel destinations using the search bar. The application fetches data from OpenTripMap API to provide detailed information about the destinations.
+- Destination Details: Each destination page displays a wealth of information about the location, such as its name, description, and a gallery of images that showcase the beauty of the place.
+- User Authentication: Travel Wanderlust includes user registration and login functionality, allowing users to create accounts and log in to access additional features or contribute to the platform.
 
-![Whiteboard](./client/public/images/client%20side.png)
+![Whiteboard](./images/client%20side.png)
 
-![Whiteboard](./client/public/images/server%20side.png)
-
+![Whiteboard](./images/server%20side.png)
 
 ## Technologies
 
@@ -25,8 +24,7 @@ OpenTripMap API: Travel Wanderlust integrates with the OpenTripMap API to access
 
 ## Collaborators
 
-BreeAnn Bond 
-Christopher Gonzales 
+BreeAnn Bond
+Christopher Gonzales
 Tanner Bohn
 Jorge Munoz
-
