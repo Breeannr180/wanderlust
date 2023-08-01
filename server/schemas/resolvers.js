@@ -1,17 +1,17 @@
-const { User, Board } = require("../models");
+const { User, Location, Feature } = require('../models');
 
-const { signToken } = require("../utils/auth");
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     user: async () => {},
-    board: async () => {},
+    location: async () => {},
   },
   Mutation: {
     addUser: async () => {},
     editUser: async () => {},
-    addBoard: async () => {},
-    editBoard: async () => {},
+    addLocation: async () => {},
+    editLocation: async () => {},
     login: async () => {},
   },
 };
