@@ -1,4 +1,5 @@
 const User = require("./User");
-const Board = require("./Board");
+const Location = require("./Location");
+const Feature = require("./Feature");
 
-module.exports = { User, Board };
+module.exports = { User, Location, Feature };
