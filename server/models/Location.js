@@ -12,7 +12,13 @@ const locationSchema = new Schema({
   long: {
     type: Number,
     required: true,
-  }
+  },
+  savedFeature: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Feature',
+    },
+  ],
 });
 
 const Location = model("Location", locationSchema);
