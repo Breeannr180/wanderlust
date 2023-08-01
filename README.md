@@ -1,4 +1,4 @@
-# project-3
+# Travel Wanderlust
 
 ##Description
 
@@ -10,6 +10,9 @@ Travel Wanderlust is a comprehensive web application that serves as your ultimat
 * Destination Details: Each destination page displays a wealth of information about the location, such as its name, description, and a gallery of images that showcase the beauty of the place.
 * User Authentication: Travel Wanderlust includes user registration and login functionality, allowing users to create accounts and log in to access additional features or contribute to the platform.
 
+![Whiteboard](./client/public/images/client%20side.png)
+
+![Whiteboard](./client/public/images/server%20side.png)
 
 
 ##Technologies
