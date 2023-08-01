@@ -22,6 +22,16 @@ type Feature {
     rate: Int!
     wikidata: String!
 }
+
+type Auth {
+    token: ID!
+    user: User
+}
+
+type Query {
+    user(username: String!): User
+    location(name: String!): Location
+}
 `;
 
 module.exports = typeDefs;
