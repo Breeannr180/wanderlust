@@ -12,7 +12,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
-  locations: [
+  savedLocations: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Location',
