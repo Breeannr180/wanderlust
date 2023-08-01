@@ -9,6 +9,9 @@ const Nav = () => {
           <Link to="./">Home</Link>
         </li>
         <li>
+          <Link to="/components/Wiki/Search">Search</Link>
+        </li>
+        <li>
           <Link to="./components/Auth/Register">Register</Link>
         </li>
         <li>
