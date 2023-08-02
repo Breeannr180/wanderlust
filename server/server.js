@@ -14,7 +14,10 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
-const { getDestinationData } = require('./routes/openTripMap');
+const {
+  getDestinationData,
+  getOpenTripMapData,
+} = require('./routes/openTripMap');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -28,7 +31,12 @@ app.get('/', (req, res) => {
 });
 
 // OpenTrip route
-app.get('/api/opentripmap/destination', async (req, res) => {
+app.post('/api/opentripmap/destination', async (req, res) => {
+  const location = req.body.location;
+  console.log('location', location);
+  const locationData = await getOpenTripMapData(location);
+  res.status(200).json(locationData);
+  // res.status(200).json({ message: req.body.location });
 });
 
 // Create a new instance of an Apollo server with the GraphQL schema
