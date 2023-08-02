@@ -38,8 +38,8 @@ const typeDefs = gql`
     addUser(username: String!, password: String!): Auth
     addLocation(username: String!, name: String!, lat: Int!, long: Int!): Location
     addFeature(locationName: String!, name: String!, dist: Int!, rate: Int!, wikidata: String!): Feature
-    removeLocation(_id: ID!): User
-    removeFeature(_id: ID!): Location
+    removeLocation(userId: ID!, locationId: ID!): Location
+    removeFeature(locationId: ID!, featureId: ID!): Feature
     login(username: String!, password: String!): Auth
   }
 `;

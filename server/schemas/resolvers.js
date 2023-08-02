@@ -36,8 +36,22 @@ const resolvers = {
       );
       return feature
     },
-    removeLocation: async () => { },
-    removeFeature: async () => { },
+    removeLocation: async (parent, { userId, locationId }) => {
+      await User.findOneAndUpdate(
+        { _id: userId },
+        { $pull: { savedLocations: { _id: locationId } } },
+        { new: true }
+      );
+      return Location.findOneAndDelete({ _id: locationId })
+    },
+    removeFeature: async (parent, { locationId, featureId }) => {
+      await Location.findOneAndUpdate(
+        { _id: locationId },
+        { $pull: { savedFeatures: { _id: featureId } } },
+        { new: true }
+      );
+      return Feature.findOneAndDelete({ _id: featureId })
+    },
     login: async () => { },
   },
 };
