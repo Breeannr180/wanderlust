@@ -6,6 +6,9 @@ const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
+// Import dotenv and load the environment variables
+require('dotenv').config();
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
@@ -29,6 +32,14 @@ app.get('/', (req, res) => {
 
 // OpenTrip route
 app.get('/api/opentripmap/destination', async (req, res) => {
+  try {
+    const { query } = req.query;
+    const destinationData = await getDestinationData(query);
+    res.json(destinationData);
+  } catch (error) {
+    console.error('Error handling destination data request:', error);
+    res.status(500).json({ error: 'Error handling destination data request' });
+  }
 });
 
 // Create a new instance of an Apollo server with the GraphQL schema

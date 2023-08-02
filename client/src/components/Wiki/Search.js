@@ -9,7 +9,7 @@ const Search = () => {
     try {
       const response = await fetch(`/api/opentripmap/destination?query=${query}`);
       const data = await response.json();
-      setOpenTripMapData(data);
+      setOpenTripMapData(data.features);
     } catch (error) {
       console.error('Error fetching OpenTripMap data:', error);
     }
