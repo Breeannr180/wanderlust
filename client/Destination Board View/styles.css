@@ -1,0 +1,59 @@
+/* Reset some default styles for better layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Styling for header */
+header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Styling for the grid container */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Styling for each grid item */
+.grid-item {
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.grid-item h2 {
+  margin-bottom: 10px;
+}
+
+.grid-item button {
+  display: block;
+  margin-top: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.grid-item button:hover {
+  background-color: #444;
+}
+
+/* Styling for the container holding the grid */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
