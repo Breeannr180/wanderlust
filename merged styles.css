@@ -1,0 +1,191 @@
+/* Contents of login-page.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .slideshow {
+    flex: 1;
+    max-width: 50%;
+    padding: 20px;
+  }
+  
+  .slideshow img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .login-box {
+    flex: 1;
+    max-width: 50%;
+    padding: 20px;
+  }
+  
+  .login-box h2 {
+    text-align: center;
+  }
+  
+  .login-box form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-box input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .login-box button {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .login-box button[type="submit"] {
+    background-color: #007BFF;
+  }
+  
+  /* Contents of profile-page.css */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  
+  .destination-column {
+    flex: 1;
+    max-width: 50%;
+  }
+  
+  .destination-box {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .destination-box h2 {
+    margin-bottom: 5px;
+  }
+  
+  .navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .profile-actions {
+    flex: 1;
+    max-width: 40%;
+  }
+  
+  .profile-actions button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Contents of destination-board-page.css */
+  /* Reset some default styles for better layout */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Styling for header */
+  header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  
+  /* Styling for the grid container */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Styling for each grid item */
+  .grid-item {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .grid-item h2 {
+    margin-bottom: 10px;
+  }
+  
+  .grid-item button {
+    display: block;
+    margin-top: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .grid-item button:hover {
+    background-color: #444;
+  }
+  
+  /* Styling for the container holding the grid */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
