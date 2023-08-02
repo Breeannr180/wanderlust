@@ -6,6 +6,9 @@ const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
+// Import dotenv and load the environment variables
+require('dotenv').config();
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
@@ -36,7 +39,6 @@ app.post('/api/opentripmap/destination', async (req, res) => {
   console.log('location', location);
   const locationData = await getOpenTripMapData(location);
   res.status(200).json(locationData);
-  // res.status(200).json({ message: req.body.location });
 });
 
 // Create a new instance of an Apollo server with the GraphQL schema

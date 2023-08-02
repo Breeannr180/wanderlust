@@ -19,7 +19,7 @@ async function getOpenTripMapData(query) {
 async function getDestinationData(destinationName) {
   try {
     // Fetch place data based on the destination name
-    const placeUrl = `https://api.opentripmap.com/0.1/en/places/geoname?name=${destinationName}&apikey=${APIkey}`;
+    const placeUrl = `https://api.opentripmap.com/0.1/en/places/geoname?name=${destinationName}&limit=10&apikey=${APIkey}`;
     const placeResponse = await axios.get(placeUrl);
     const placeData = placeResponse.data;
 
