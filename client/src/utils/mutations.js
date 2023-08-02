@@ -21,11 +21,18 @@ export const ADD_LOCATION = gql`
       long: Int!
       savedFeatures {
         _id
-        name
-        dist
-        rate
-        wikidata
+        name        
       }    
     }
   }
 `;
+
+export const ADD_FEATURE = gql`
+addFeature($locationName: String!, $name: String!, $dist: Int!, $rate: Int!, $wikidata: String!) {
+    addFeature(locationName: $locationName, name: $name, dist: $dist, rate: $rate, wikidata: $wikidata) {
+       _id: ID!
+      name: String!        
+    }
+  }
+`;
+
