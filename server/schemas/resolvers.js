@@ -15,10 +15,29 @@ const resolvers = {
     },
   },
   Mutation: {
-    addUser: async () => { },
-    editUser: async () => { },
-    addLocation: async () => { },
-    editLocation: async () => { },
+    addUser: async (parent, { username, password }) => {
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
+      return { token, user };
+    },
+    addLocation: async (parent, { username, name, lat, long }) => {
+      const location = await Location.create({ name, lat, long })
+      await User.findOneAndUpdate(
+        { username: username },
+        { $addToSet: { savedLocations: location._id } }
+      );
+      return location
+    },
+    addFeature: async (parent, { locationName, name, dist, rate, wikidata }) => {
+      const feature = await Feature.create({ name, dist, rate, wikidata })
+      await Location.findOneAndUpdate(
+        { name: locationName },
+        { $addToSet: { savedFeatures: feature._id } }
+      );
+      return feature
+    },
+    removeLocation: async () => { },
+    removeFeature: async () => { },
     login: async () => { },
   },
 };
