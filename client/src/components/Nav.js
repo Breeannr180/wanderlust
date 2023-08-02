@@ -6,18 +6,18 @@ const Nav = () => {
     <nav>
       <ul>
         <li>
-          <Link to="./">Home</Link>
+          <Link to='./'>Home</Link>
         </li>
         <li>
-          <Link to="/components/Wiki/Search">Search</Link>
-        </li>
-        <li>
-          <Link to="./components/Auth/Register">Register</Link>
-        </li>
-        <li>
-          <Link to="/components/Auth/Login">Login</Link>
+          <Link to='/components/Wiki/Search'>Search</Link>
         </li>
       </ul>
+      <button className='btn'>
+        <Link to='./components/Auth/Register'>Register</Link>
+      </button>
+      <button className='btn'>
+        <Link to='/components/Auth/Login'>Login</Link>
+      </button>
     </nav>
   );
 };
