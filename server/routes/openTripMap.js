@@ -1,18 +1,18 @@
-require("dotenv").config();
-const axios = require("axios");
-const APIkey = process.env.OPEN_MAP_API_KEY;
+require('dotenv').config();
+const axios = require('axios');
+const APIkey = process.env.OPEN_TRIP_API_KEY;
 
 async function getOpenTripMapData(query) {
+  const apiUrl = `https://api.opentripmap.com/0.1/en/places/geoname?name=Paris&apikey=${APIkey}`;
   try {
-    const apiUrl = `https://api.opentripmap.com/0.1/en/places/geoname?name=${query}&apikey=APIkey`;
     const response = await axios.get(apiUrl);
 
     // Process the data as needed (e.g., extract relevant information, filter, etc.)
 
     return response.data;
   } catch (error) {
-    console.error("Error fetching OpenTripMap data:", error);
-    throw new Error("Error fetching OpenTripMap data");
+    console.error('Error fetching OpenTripMap data:', error);
+    throw new Error('Error fetching OpenTripMap data');
   }
 }
 
@@ -39,28 +39,14 @@ async function getDestinationData(destinationName) {
         images: imagesData,
       };
     } else {
-      throw new Error("Destination not found");
+      throw new Error('Destination not found');
     }
   } catch (error) {
-    console.error("Error fetching destination data:", error);
-    throw new Error("Error fetching destination data");
+    console.error('Error fetching destination data:', error);
+    throw new Error('Error fetching destination data');
   }
 }
 
 module.exports = { getDestinationData };
-
-async function getOpenTripMapData(query) {
-  try {
-    const apiUrl = `https://api.opentripmap.com/0.1/en/places/geoname?name=${query}&apikey=YOUR_OPENTRIPMAP_API_KEY`;
-    const response = await axios.get(apiUrl);
-
-    // Process the data as needed (e.g., extract relevant information, filter, etc.)
-
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching OpenTripMap data:", error);
-    throw new Error("Error fetching OpenTripMap data");
-  }
-}
 
 module.exports = { getOpenTripMapData };
