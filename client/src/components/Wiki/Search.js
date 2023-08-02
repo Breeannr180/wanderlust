@@ -7,7 +7,9 @@ const Search = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(`/api/opentripmap/destination?query=${query}`);
+      const response = await fetch(
+        `/api/opentripmap/destination?query=${query}`
+      );
       const data = await response.json();
       setOpenTripMapData(data.features);
     } catch (error) {
@@ -17,7 +19,11 @@ const Search = () => {
 
   return (
     <div>
-      <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
+      <input
+        type='text'
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
       <button onClick={handleSearch}>Search</button>
       {openTripMapData && <div>{JSON.stringify(openTripMapData)}</div>}
     </div>
@@ -25,4 +31,3 @@ const Search = () => {
 };
 
 export default Search;
-
