@@ -7,9 +7,14 @@ const Search = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(
-        `/api/opentripmap/destination?query=${query}`
-      );
+      const response = await fetch('/api/opentripmap/destination', {
+        method: 'POST',
+        body: JSON.stringify({ location: query }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
       const data = await response.json();
       setOpenTripMapData(data);
     } catch (error) {

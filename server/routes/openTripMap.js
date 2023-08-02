@@ -3,7 +3,6 @@ const axios = require('axios');
 const APIkey = process.env.OPEN_TRIP_API_KEY;
 
 async function getOpenTripMapData(query) {
-  console.log('APIkey', APIkey);
   const apiUrl = `https://api.opentripmap.com/0.1/en/places/geoname?name=Paris&apikey=${APIkey}`;
   try {
     const response = await axios.get(apiUrl);
