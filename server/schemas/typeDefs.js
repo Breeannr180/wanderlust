@@ -31,13 +31,15 @@ const typeDefs = gql`
   type Query {
     user(username: String!): User
     location(name: String!): Location
+    feature(name: String!): Feature
   }
 
   type Mutation {
     addUser(username: String!, password: String!): Auth
-    editUser(username: String!, password: String!): Auth
-    addLocation(name: String!, lat: Int!, long: Int!): Location
-    editLocation(name: String!, lat: Int!, long: Int!): Location
+    addLocation(username: String!, name: String!, lat: Int!, long: Int!): Location
+    addFeature(locationName: String!, name: String!, dist: Int!, rate: Int!, wikidata: String!): Feature
+    removeLocation(userId: ID!, locationId: ID!): Location
+    removeFeature(locationId: ID!, featureId: ID!): Feature
     login(username: String!, password: String!): Auth
   }
 `;
