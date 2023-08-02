@@ -14,7 +14,7 @@ export const QUERY_USER = gql`
             _id
             name
             dist
-            reate
+            rate
             wikidata
         }
       }
@@ -33,11 +33,22 @@ export const QUERY_LOCATIONS = gql`
             _id
             name
             dist
-            reate
+            rate
             wikidata
         }
       }
   }
 `;
 
+export const QUERY_FEATURES = gql`
+  query feature($name: String!) {
+    feature(name: $name) {
+        _id
+        name
+        dist
+        rate
+        wikidata
+      }
+  }
+`;
 
