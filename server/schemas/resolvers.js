@@ -52,7 +52,23 @@ const resolvers = {
       );
       return Feature.findOneAndDelete({ _id: featureId })
     },
-    login: async () => { },
+    login: async (parent, { username, password }) => {
+      const user = await User.findOne({ username });
+
+      if (!user) {
+        throw new AuthenticationError(`${username} does not exist`);
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect password');
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    },
   },
 };
 
