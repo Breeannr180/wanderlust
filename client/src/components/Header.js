@@ -1,13 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Nav from '../components/Nav';
 
 const Header = () => {
   return (
-    <div className='header'>
-      <p>WanderLust</p>
+    <nav className='navbar bg-neutral'>
+      <div className='navbar-start'>
+        <button className='btn btn-active bg-base-300 text-xl p2'>
+          <Link to='/'>Travel Wanderlust</Link>
+        </button>
+      </div>
       <Nav />
-    </div>
+    </nav>
   );
 };
 

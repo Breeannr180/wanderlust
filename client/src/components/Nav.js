@@ -1,24 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Auth from '../utils/auth';
 
 const Nav = () => {
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to='./'>Home</Link>
-        </li>
-        <li>
-          <Link to='/components/Wiki/Search'>Search</Link>
-        </li>
-      </ul>
-      <button className='btn'>
-        <Link to='./components/Auth/Register'>Register</Link>
+    <div className='navbar-end'>
+      <button className='btn btn-primary'>
+        <Link to='/search'>Search</Link>
       </button>
-      <button className='btn'>
-        <Link to='/components/Auth/Login'>Login</Link>
-      </button>
-    </nav>
+      {Auth.loggedIn() ? (
+        <button className='btn'>
+          <Link to='/login'>Login</Link>
+        </button>
+      ) : (
+        <button className='btn'>
+          <Link to='/profile'>Profile</Link>
+        </button>
+      )}
+    </div>
   );
 };
 
