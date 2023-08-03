@@ -1,11 +1,8 @@
 import React from 'react';
-import Header from '../Header';
-import Footer from '../Footer';
 
 const Location = () => {
   return (
     <div>
-      <Header />
       <div class='grid-container'>
         <div class='grid-item'>
           <h2>Event/Destination 1</h2>
@@ -38,7 +35,6 @@ const Location = () => {
           <button>View/Edit</button>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

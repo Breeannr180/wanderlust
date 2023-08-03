@@ -1,11 +1,8 @@
 import React from 'react';
-import Header from '../Header';
-import Footer from '../Footer';
 
 const Login = () => {
   return (
     <div>
-      <Header />
       <div className='login'>
         <h2>Login</h2>
         <form>
@@ -15,7 +12,6 @@ const Login = () => {
           <button type='button'>Sign Up Instead</button>
         </form>
       </div>
-      <Footer />
     </div>
   );
 };
