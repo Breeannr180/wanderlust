@@ -4,15 +4,10 @@ import Auth from '../utils/auth';
 
 const Nav = () => {
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/search'>Search</Link>
-        </li>
-      </ul>
+    <div className='navbar-end'>
+      <button className='btn btn-primary'>
+        <Link to='/search'>Search</Link>
+      </button>
       {Auth.loggedIn() ? (
         <button className='btn'>
           <Link to='/login'>Login</Link>
@@ -22,7 +17,7 @@ const Nav = () => {
           <Link to='/profile'>Profile</Link>
         </button>
       )}
-    </nav>
+    </div>
   );
 };
 
