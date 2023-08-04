@@ -56,7 +56,7 @@ const resolvers = {
       return Feature.findOneAndDelete({ _id: featureId })
     },
     login: async (parent, { username, password }) => {
-      const user = await User.findOne({ username });
+      const user = await User.findOne({ username }).populate('savedLocations');
 
       if (!user) {
         throw new AuthenticationError(`${username} does not exist`);
