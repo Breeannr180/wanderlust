@@ -16,7 +16,7 @@ const Search = () => {
       });
 
       const data = await response.json();
-      setOpenTripMapData(data.features);
+      setOpenTripMapData(data);
     } catch (error) {
       console.error('Error fetching OpenTripMap data:', error);
     }
