@@ -13,17 +13,13 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_LOCATION = gql`
-  mutation addLocation(
-    $username: String!
-    $name: String!
-    $lat: Int!
-    $long: Int!
-  ) {
-    addLocation(username: $username, name: $name, lat: $lat, long: $long) {
-      _id: ID
-      name: String
-      lat: Int
-      long: Int
+  mutation addLocation($userId: ID!, $name: String!, $lat: Int!, $long: Int!) {
+    addLocation(userId: $userId, name: $name, lat: $lat, long: $long) {
+       _id: ID!
+      name: String!
+      lat: Int!
+      long: Int!
+
       savedFeatures {
         _id
         name
@@ -33,22 +29,10 @@ export const ADD_LOCATION = gql`
 `;
 
 export const ADD_FEATURE = gql`
-  mutation addFeature(
-    $locationName: String!
-    $name: String!
-    $dist: Int!
-    $rate: Int!
-    $wikidata: String!
-  ) {
-    addFeature(
-      locationName: $locationName
-      name: $name
-      dist: $dist
-      rate: $rate
-      wikidata: $wikidata
-    ) {
-      _id: ID
-      name: String
+addFeature($locationId: ID!, $name: String!, $dist: Int!, $rate: Int!, $wikidata: String!) {
+    addFeature(locationId: $locationId, name: $name, dist: $dist, rate: $rate, wikidata: $wikidata) {
+       _id: ID!
+      name: String!        
     }
   }
 `;
@@ -64,3 +48,15 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const REMOVE_USER = gql`
+  mutation removeUser($userId: ID!) {
+    removeUser(userId: $userId) {
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
+
