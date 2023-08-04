@@ -12,20 +12,25 @@ export const ADD_USER = gql`
   }
 `;
 
-// export const ADD_LOCATION = gql`
-//   mutation addLocation($username: String!, $name: String!, $lat: Int!, $long: Int!) {
-//     addLocation(username: $username, $name: name, $lat: lat, $long: long) {
-//        _id: ID
-//       name: String
-//       lat: Int
-//       long: Int
-//       savedFeatures {
-//         _id
-//         name
-//       }
-//     }
-//   }
-// `;
+export const ADD_LOCATION = gql`
+  mutation addLocation(
+    $username: String!
+    $name: String!
+    $lat: Int!
+    $long: Int!
+  ) {
+    addLocation(username: $username, name: $name, lat: $lat, long: $long) {
+      _id: ID
+      name: String
+      lat: Int
+      long: Int
+      savedFeatures {
+        _id
+        name
+      }
+    }
+  }
+`;
 
 export const ADD_FEATURE = gql`
   mutation addFeature(
