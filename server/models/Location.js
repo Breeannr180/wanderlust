@@ -15,7 +15,7 @@ const locationSchema = new Schema({
     type: Number,
     required: true,
   },
-  savedFeature: [
+  savedFeatures: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Feature',

@@ -4,37 +4,43 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('savedLocations')
+    users: async () => {
+      return User.find().populate('savedLocations')
     },
-    location: async (parent, { name }) => {
-      return Location.findOne({ name }).populate('savedFeatures')
+    user: async (parent, { userId }) => {
+      return User.findOne({ _id: userId }).populate('savedLocations')
     },
-    feature: async (parent, { name }) => {
-      return Feature.findOne({ name })
+    location: async (parent, { locationId }) => {
+      return Location.findOne({ _id: locationId }).populate('savedFeatures')
+    },
+    feature: async (parent, { featureId }) => {
+      return Feature.findOne({ _id: featureId })
     },
   },
   Mutation: {
     addUser: async (parent, { username, password }) => {
-      const user = await User.create({ username, email, password });
+      const user = await User.create({ username, password });
       const token = signToken(user);
       return { token, user };
     },
-    addLocation: async (parent, { username, name, lat, long }) => {
+    addLocation: async (parent, { userId, name, lat, long }) => {
       const location = await Location.create({ name, lat, long })
       await User.findOneAndUpdate(
-        { username: username },
+        { _id: userId },
         { $addToSet: { savedLocations: location._id } }
       );
       return location
     },
-    addFeature: async (parent, { locationName, name, dist, rate, wikidata }) => {
+    addFeature: async (parent, { locationId, name, dist, rate, wikidata }) => {
       const feature = await Feature.create({ name, dist, rate, wikidata })
       await Location.findOneAndUpdate(
-        { name: locationName },
+        { _id: locationId },
         { $addToSet: { savedFeatures: feature._id } }
       );
       return feature
+    },
+    removeUser: async (parent, { userId }) => {
+      return User.findOneAndDelete({ _id: userId })
     },
     removeLocation: async (parent, { userId, locationId }) => {
       await User.findOneAndUpdate(
@@ -53,7 +59,7 @@ const resolvers = {
       return Feature.findOneAndDelete({ _id: featureId })
     },
     login: async (parent, { username, password }) => {
-      const user = await User.findOne({ username });
+      const user = await User.findOne({ username }).populate('savedLocations');
 
       if (!user) {
         throw new AuthenticationError(`${username} does not exist`);
