@@ -8,15 +8,15 @@ const Nav = () => {
       <button className='btn btn-primary'>
         <Link to='/search'>Search</Link>
       </button>
-      {Auth.loggedIn() ? (
-        <button className='btn'>
-          <Link to='/login'>Login</Link>
-        </button>
-      ) : (
-        <button className='btn'>
-          <Link to='/profile'>Profile</Link>
-        </button>
-      )}
+      {/* {Auth.loggedIn() ? ( */}
+      <button className='btn'>
+        <Link to='/login'>Login</Link>
+      </button>
+      {/* ) : ( */}
+      <button className='btn'>
+        <Link to='/profile'>Profile</Link>
+      </button>
+      {/* )} */}
     </div>
   );
 };

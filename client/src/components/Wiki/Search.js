@@ -29,8 +29,13 @@ const Search = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
+
       <button onClick={handleSearch}>Search</button>
-      {openTripMapData && <div>{JSON.stringify(openTripMapData)}</div>}
+      {openTripMapData ? (
+        <div>{JSON.stringify(openTripMapData)}</div>
+      ) : (
+        <h1>Search for a Location</h1>
+      )}
     </div>
   );
 };
