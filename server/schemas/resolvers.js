@@ -39,6 +39,9 @@ const resolvers = {
       );
       return feature
     },
+    removeUser: async (parent, { userId }) => {
+      return User.findOneAndDelete({ _id: userId })
+    },
     removeLocation: async (parent, { userId, locationId }) => {
       await User.findOneAndUpdate(
         { _id: userId },
