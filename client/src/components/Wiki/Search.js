@@ -12,8 +12,6 @@ const Search = () => {
   const [query, setQuery] = useState('');
   const [openTripMapData, setOpenTripMapData] = useState(null);
   const [searchType, setSearchType] = useState('');
-  const [openTripMapData, setOpenTripMapData] = useState('');
-  const [query, setQuery] = useState('');
 
   const handleSearch = async () => {
     try {
