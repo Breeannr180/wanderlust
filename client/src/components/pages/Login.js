@@ -10,8 +10,8 @@ const Login = () => {
     password: '',
   });
 
-  const [login, { err, newUserData }] = useMutation(LOGIN_USER);
-  const [addUser, { error, userData }] = useMutation(ADD_USER);
+  const [login, { err, userData }] = useMutation(LOGIN_USER);
+  const [addUser, { error, newUserData }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -55,8 +55,8 @@ const Login = () => {
       <div className='login'>
         <h2>Login</h2>
         <form onSubmit={loginUser}>
-          <input type='text' placeholder='Username' name="username" type="text" value={formState.name} onChange={handleChange} required />
-          <input type='password' placeholder='Password' name="password" type="password" value={formState.password} onChange={handleChange} required />
+          <input type='text' placeholder='Username' name="username" value={formState.name} onChange={handleChange} required />
+          <input type='password' placeholder='Password' name="password" value={formState.password} onChange={handleChange} required />
           <button type='submit' >Log In</button>
         </form>
         <form onSubmit={createNewUser}>
