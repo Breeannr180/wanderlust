@@ -1,5 +1,6 @@
 // client/src/components/Search.js
 import React, { useState } from 'react';
+import LocationResults from './LocationResults';
 
 const Search = () => {
   const [query, setQuery] = useState('');
@@ -16,7 +17,7 @@ const Search = () => {
       });
 
       const data = await response.json();
-      setOpenTripMapData(data);
+      const features = setOpenTripMapData(data);
     } catch (error) {
       console.error('Error fetching OpenTripMap data:', error);
     }
@@ -24,17 +25,32 @@ const Search = () => {
 
   return (
     <div>
-      <input
-        type='text'
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
+      <div className='card card-bordered'>
+        <div className='card-body'>
+          <h1 className='card-header'>Find your travel destination</h1>
+          <input
+            className='input input-bordered'
+            type='text'
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
 
-      <button onClick={handleSearch}>Search</button>
+          <button className='btn' onClick={handleSearch}>
+            Search
+          </button>
+        </div>
+      </div>
       {openTripMapData ? (
-        <div>{JSON.stringify(openTripMapData)}</div>
+        <div className='card card-bordered'>
+          <div>{JSON.stringify(openTripMapData)}</div>
+          <LocationResults
+            name={openTripMapData.name}
+            lat={openTripMapData.lat}
+            lon={openTripMapData.lon}
+          />
+        </div>
       ) : (
-        <h1>Search for a Location</h1>
+        <div></div>
       )}
     </div>
   );
