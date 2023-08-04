@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
 import SearchResults from './SearchResults';
-
 import LocationResults from './LocationResults';
 
 const Search = () => {
@@ -11,6 +9,8 @@ const Search = () => {
   const [activitiesResults, setActivitiesResults] = useState(null);
   const [popularQuery, setPopularQuery] = useState('');
   const [popularResults, setPopularResults] = useState(null);
+  const [query, setQuery] = useState('');
+  const [openTripMapData, setOpenTripMapData] = useState(null);
   const [searchType, setSearchType] = useState('');
   const [openTripMapData, setOpenTripMapData] = useState('');
   const [query, setQuery] = useState('');
@@ -35,18 +35,18 @@ const Search = () => {
         );
         const data = await response.json();
         setPopularResults(data.features);
+      } else {
+        const response = await fetch('/api/opentripmap/destination', {
+          method: 'POST',
+          body: JSON.stringify({ location: query }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        const data = await response.json();
+        setOpenTripMapData(data);
       }
-
-      const response = await fetch('/api/opentripmap/destination', {
-        method: 'POST',
-        body: JSON.stringify({ location: query }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      const data = await response.json();
-      const features = setOpenTripMapData(data);
     } catch (error) {
       console.error('Error fetching OpenTripMap data:', error);
     }
@@ -86,6 +86,7 @@ const Search = () => {
         <button onClick={() => setSearchType('popular')}>Search</button>
       </div>
       {popularResults && <SearchResults results={popularResults} />}
+
       <div className='card card-bordered'>
         <div className='card-body'>
           <h1 className='card-header'>Find your travel destination</h1>
@@ -110,9 +111,7 @@ const Search = () => {
             lon={openTripMapData.lon}
           />
         </div>
-      ) : (
-        <div></div>
-      )}
+      ) : null}
     </div>
   );
 };
