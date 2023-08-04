@@ -9,8 +9,8 @@ const Home = () => {
       </div>
       <div className='search-boxes-container'>
           <div className='search-box'>
-          {/* Random Destination Search Box */}
-          <h3>Random Destination</h3>
+          {/* Specific Destination Search Box */}
+          <h3>Specific Destination</h3>
           <input type='text' placeholder='Enter your search' />
           <button>Search</button>
         </div>
