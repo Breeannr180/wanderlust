@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const QUERY_USER = gql`
   query user($userId: ID!) {
-    user(_id: $userId) {
+    user(userId: $userId) {
       _id
       username
       savedLocations {
@@ -17,7 +17,7 @@ export const QUERY_USER = gql`
 
 export const QUERY_LOCATIONS = gql`
   query location($locationId: ID!) {
-    location(_id: $locationId) {
+    location(locationId: $locationId) {
         _id
         name
         lat
@@ -35,7 +35,7 @@ export const QUERY_LOCATIONS = gql`
 
 export const QUERY_FEATURES = gql`
   query feature($featureId: ID!) {
-    feature(_id: $featureId) {
+    feature(featureId: $featureId) {
         _id
         name
         dist
