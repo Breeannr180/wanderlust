@@ -13,8 +13,8 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_LOCATION = gql`
-  mutation addLocation($username: String!, $name: String!, $lat: Int!, $long: Int!) {
-    addLocation(username: $username, $name: name, $lat: lat, $long: long) {
+  mutation addLocation($userId: ID!, $name: String!, $lat: Int!, $long: Int!) {
+    addLocation(userId: $userId, $name: name, $lat: lat, $long: long) {
        _id: ID!
       name: String!
       lat: Int!
@@ -28,8 +28,8 @@ export const ADD_LOCATION = gql`
 `;
 
 export const ADD_FEATURE = gql`
-addFeature($locationName: String!, $name: String!, $dist: Int!, $rate: Int!, $wikidata: String!) {
-    addFeature(locationName: $locationName, name: $name, dist: $dist, rate: $rate, wikidata: $wikidata) {
+addFeature($locationId: ID!, $name: String!, $dist: Int!, $rate: Int!, $wikidata: String!) {
+    addFeature(locationId: $locationId, name: $name, dist: $dist, rate: $rate, wikidata: $wikidata) {
        _id: ID!
       name: String!        
     }
@@ -37,9 +37,20 @@ addFeature($locationName: String!, $name: String!, $dist: Int!, $rate: Int!, $wi
 `;
 
 export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
       token
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+export const REMOVE_USER = gql`
+  mutation removeUser($userId: ID!) {
+    removeUser(userId: $userId) {
       user {
         _id
         username
