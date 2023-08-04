@@ -15,12 +15,6 @@ const Home = () => {
           <button>Search</button>
         </div>
         <div className='search-box'>
-          {/* Specific Destination Search Box */}
-          <h3>Specific Destination</h3>
-          <input type='text' placeholder='Enter your search' />
-          <button>Search</button>
-        </div>
-        <div className='search-box'>
           {/* Activities Search Box */}
           <h3>Activities</h3>
           <input type='text' placeholder='Enter your search' />
