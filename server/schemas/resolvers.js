@@ -4,6 +4,9 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
+    users: async () => {
+      return User.find().populate('savedLocations')
+    },
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('savedLocations')
     },
@@ -16,7 +19,7 @@ const resolvers = {
   },
   Mutation: {
     addUser: async (parent, { username, password }) => {
-      const user = await User.create({ username, email, password });
+      const user = await User.create({ username, password });
       const token = signToken(user);
       return { token, user };
     },
@@ -53,7 +56,7 @@ const resolvers = {
       return Feature.findOneAndDelete({ _id: featureId })
     },
     login: async (parent, { username, password }) => {
-      const user = await User.findOne({ username });
+      const user = await User.findOne({ username }).populate('savedLocations');
 
       if (!user) {
         throw new AuthenticationError(`${username} does not exist`);
