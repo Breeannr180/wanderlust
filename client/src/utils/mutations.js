@@ -14,15 +14,16 @@ export const ADD_USER = gql`
 
 export const ADD_LOCATION = gql`
   mutation addLocation($userId: ID!, $name: String!, $lat: Int!, $long: Int!) {
-    addLocation(userId: $userId, $name: name, $lat: lat, $long: long) {
+    addLocation(userId: $userId, name: $name, lat: $lat, long: $long) {
        _id: ID!
       name: String!
       lat: Int!
       long: Int!
+
       savedFeatures {
         _id
-        name        
-      }    
+        name
+      }
     }
   }
 `;
@@ -58,3 +59,4 @@ export const REMOVE_USER = gql`
     }
   }
 `;
+
