@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <nav className='navbar bg-neutral'>
       <div className='navbar-start'>
-      <img src={logo} alt='logo' className='logo' />
+      <img src={logo} alt='logo' className='logo' style={{ width: '150px', height: 'auto' }} />
         <button className='btn btn-active bg-base-300 text-xl p2'>
           <Link to='/'>Travel Wanderlust  </Link>
         </button>
