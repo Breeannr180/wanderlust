@@ -8,13 +8,13 @@ const resolvers = {
       return User.find().populate('savedLocations')
     },
     user: async (parent, { userId }) => {
-      return User.findOne({ userId }).populate('savedLocations')
+      return User.findOne({ _id: userId }).populate('savedLocations')
     },
     location: async (parent, { locationId }) => {
-      return Location.findOne({ locationId }).populate('savedFeatures')
+      return Location.findOne({ _id: locationId }).populate('savedFeatures')
     },
     feature: async (parent, { featureId }) => {
-      return Feature.findOne({ featureId })
+      return Feature.findOne({ _id: featureId })
     },
   },
   Mutation: {
