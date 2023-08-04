@@ -7,14 +7,14 @@ const resolvers = {
     users: async () => {
       return User.find().populate('savedLocations')
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('savedLocations')
+    user: async (parent, { userId }) => {
+      return User.findOne({ _id: userId }).populate('savedLocations')
     },
-    location: async (parent, { name }) => {
-      return Location.findOne({ name }).populate('savedFeatures')
+    location: async (parent, { locationId }) => {
+      return Location.findOne({ _id: locationId }).populate('savedFeatures')
     },
-    feature: async (parent, { name }) => {
-      return Feature.findOne({ name })
+    feature: async (parent, { featureId }) => {
+      return Feature.findOne({ _id: featureId })
     },
   },
   Mutation: {
@@ -23,21 +23,24 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addLocation: async (parent, { username, name, lat, long }) => {
+    addLocation: async (parent, { userId, name, lat, long }) => {
       const location = await Location.create({ name, lat, long })
       await User.findOneAndUpdate(
-        { username: username },
+        { _id: userId },
         { $addToSet: { savedLocations: location._id } }
       );
       return location
     },
-    addFeature: async (parent, { locationName, name, dist, rate, wikidata }) => {
+    addFeature: async (parent, { locationId, name, dist, rate, wikidata }) => {
       const feature = await Feature.create({ name, dist, rate, wikidata })
       await Location.findOneAndUpdate(
-        { name: locationName },
+        { _id: locationId },
         { $addToSet: { savedFeatures: feature._id } }
       );
       return feature
+    },
+    removeUser: async (parent, { userId }) => {
+      return User.findOneAndDelete({ _id: userId })
     },
     removeLocation: async (parent, { userId, locationId }) => {
       await User.findOneAndUpdate(
