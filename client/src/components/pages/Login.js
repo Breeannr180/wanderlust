@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER, LOGIN_USER } from '../../utils/mutations.js';
@@ -9,6 +10,11 @@ const Login = () => {
     username: '',
     password: '',
   });
+  
+  const Login = () => {
+  const [loggingIn, setLoggingIn] = useState(true);
+  const handleToggle = () => {
+    setLoggingIn(!loggingIn);
 
   const [login, { err, userData }] = useMutation(LOGIN_USER);
   const [addUser, { error, newUserData }] = useMutation(ADD_USER);
@@ -52,18 +58,59 @@ const Login = () => {
 
   return (
     <div>
-      <div className='login'>
-        <h2>Login</h2>
-        <form onSubmit={loginUser}>
-          <input type='text' placeholder='Username' name="username" value={formState.name} onChange={handleChange} required />
-          <input type='password' placeholder='Password' name="password" value={formState.password} onChange={handleChange} required />
-          <button type='submit' >Log In</button>
-        </form>
-        <form onSubmit={createNewUser}>
-          <input type='text' placeholder='Username' required />
-          <input type='password' placeholder='Password' required />
-          <button type='button'>Sign Up</button>
-        </form>
+      <div className='card'>
+        {loggingIn ? (
+          <div className='card-body'>
+            <h2 className='card-title'>Login</h2>
+            <form className='form-control' onSubmit={loginUser}>
+              <input
+                className='input input-bordered'
+                placeholder='Username' name="username" value={formState.name} onChange={handleChange} required
+              />
+              <input
+                className='input input-bordered'
+                type='password' placeholder='Password' name="password" value={formState.password} onChange={handleChange} required
+                required
+              />
+              <div className='card-actions'>
+                <button className='btn btn-wide' type='submit'>
+                  Log In
+                </button>
+              </div>
+            </form>
+
+            <button type='button' onClick={handleToggle}>
+              Sign Up Instead
+            </button>
+          </div>
+        ) : (
+          <div className='card-body'>
+            <h2 className='card-title'>Sign Up</h2>
+            <form className='form-control' onSubmit={createNewUser}>
+              <input
+                className='input input-bordered'
+                type='text'
+                placeholder='Email'
+                required
+              />
+              <input
+                className='input input-bordered'
+                type='password'
+                placeholder='Password'
+                required
+              />
+              <div className='card-actions'>
+                <button className='btn btn-wide' type='submit'>
+                  Sign Up
+                </button>
+              </div>
+            </form>
+            <button type='button' onClick={handleToggle}>
+              Already have an account? Log In Here
+            </button>
+          </div>
+        )}
+
       </div>
     </div>
   );
