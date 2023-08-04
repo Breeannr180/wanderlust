@@ -41,6 +41,15 @@ app.post('/api/opentripmap/destination', async (req, res) => {
   res.status(200).json(locationData);
 });
 
+app.post('/api/opentripmap/features', async (req, res) => {
+  const lat = req.body.lat;
+  const lon = req.body.lon;
+  console.log('lat', lat);
+  console.log('lon', lon);
+  const locationData = await getDestinationData(lon, lat);
+  res.status(200).json(locationData);
+});
+
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
   await server.start();
