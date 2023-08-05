@@ -7,18 +7,24 @@ import auth from '../../utils/auth';
 const Profile = () => {
 
   const user = auth.getProfile()
-  console.log(user.data._id);
+  console.log(user.data);
+  const id = user.data._id
 
-  const { error, data } = useQuery(QUERY_USER, {
-    variables: { userId: user.data._id }
+  const { loading, error, data } = useQuery(QUERY_USER, {
+    variables: { userId: id }
   })
 
-  const savedLocations = data.user.savedLocations
-  console.log(savedLocations);
+  if (loading) {
+    return <h1>Loading...</h1>
+  }
 
   if (error) {
     console.log(error);
   }
+
+  console.log(data);
+  const savedLocations = data.user.savedLocations
+  console.log(savedLocations);
 
   return (
     <div>
