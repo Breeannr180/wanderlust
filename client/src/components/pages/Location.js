@@ -1,38 +1,26 @@
 import React from 'react';
+import FeatureCard from '../elements/FeatureCard';
 
-const Location = () => {
+const Location = ({ name, savedFeatures }) => {
   return (
     <div>
-      <div className='grid-container'>
-        <div className='grid-item'>
-          <h2>Event/Destination 1</h2>
-          <p>Details...</p>
-          <button>View/Edit</button>
-        </div>
-        <div className='grid-item'>
-          <h2>Event/Destination 2</h2>
-          <p>Details...</p>
-          <button>View/Edit</button>
-        </div>
-        <div className='grid-item'>
-          <h2>Event/Destination 3</h2>
-          <p>Details...</p>
-          <button>View/Edit</button>
-        </div>
-        <div className='grid-item'>
-          <h2>Event/Destination 4</h2>
-          <p>Details...</p>
-          <button>View/Edit</button>
-        </div>
-        <div className='grid-item'>
-          <h2>Event/Destination 5</h2>
-          <p>Details...</p>
-          <button>View/Edit</button>
-        </div>
-        <div className='grid-item'>
-          <h2>Event/Destination 6</h2>
-          <p>Details...</p>
-          <button>View/Edit</button>
+      <div className='card-content'>
+        <div className='content'>
+          {!savedFeatures ? (
+            <h1>No saved features yet!</h1>
+          ) : (
+            <div>
+              {savedFeatures.map((feature) => (
+                <FeatureCard
+                  key={feature._id}
+                  name={feature.name}
+                  dist={feature.dist}
+                  rate={feature.rate}
+                  wikidata={feature.wikidata}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
