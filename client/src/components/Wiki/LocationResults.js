@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import FeatureSearchCard from '../elements/FeatureSearchCard';
 
 const LocationResults = (props) => {
   const [query, setQuery] = useState('');
   const [openTripMapData, setOpenTripMapData] = useState('');
+  const [featureArray, setFeatures] = useState([]);
 
   const handleFeatureSearch = async () => {
     try {
@@ -15,7 +17,10 @@ const LocationResults = (props) => {
       });
 
       const data = await response.json();
-      const features = setOpenTripMapData(data);
+      setOpenTripMapData(data);
+      const temp = openTripMapData.features;
+      setFeatures(temp);
+      console.log(featureArray);
     } catch (error) {
       console.error('Error fetching OpenTripMap data:', error);
     }
@@ -25,16 +30,24 @@ const LocationResults = (props) => {
     <div className='card-body'>
       <div className=''>
         <h1>{props.name}</h1>
-        <input
-          className='input input-bordered'
-          type='text'
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button className='btn' onClick={handleFeatureSearch}>
-          Search for interesting features nearby
+        <button className='btn btn-primary' onClick={handleFeatureSearch}>
+          Save this location and search for interesting features nearby
         </button>
-        <div> {JSON.stringify(openTripMapData)}</div>
+        <div>
+          {openTripMapData ? (
+            <div className='flex-col'>
+              {featureArray?.map((feature) => (
+                <FeatureSearchCard
+                  key={feature.properties.xid}
+                  name={feature.properties.name}
+                  dist={feature.properties.dist}
+                  rate={feature.properties.rate}
+                  wikidata={feature.properties.wikidata}
+                />
+              ))}
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );
