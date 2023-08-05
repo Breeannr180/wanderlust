@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const profileContext = createContext();
 
@@ -6,6 +6,7 @@ const { Provider } = profileContext;
 
 const ProfileProvider = ({ value = [], ...props }) => {
   const [profile, setProfile] = useState({
+    _id: '',
     username: '',
     savedLocations: [],
   });

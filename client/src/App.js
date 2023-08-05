@@ -46,8 +46,8 @@ function App() {
             <Route exact path='/' element={<Home />} />
             <Route exact path='/search' element={<Search />} />
             <Route exact path='/login' element={<Login />} />
-            <Route exact path='/profile' element={<Profile />} />
-            <Route exact path='/location' element={<Location />} />
+            <Route exact path='/profile/' element={<Profile />} />
+            <Route exact path='/location/' element={<Location />} />
           </Routes>
           <Footer />
         </div>
