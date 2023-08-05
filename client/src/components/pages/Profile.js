@@ -2,37 +2,29 @@ import React from 'react';
 import LocationCard from '../elements/LocationCard';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries';
-import { useParams } from 'react-router-dom';
-import { useProfileContext } from '../../utils/GlobalState';
+import auth from '../../utils/auth';
 
 const Profile = () => {
 
-  const [queryUser, { error, data }] = useQuery(QUERY_USER);
-  const { profile } = useProfileContext();
+  const user = auth.getProfile()
+  console.log(user.data._id);
 
-  const fetchData = async (event) => {
-    event.preventDefault();
+  const { error, data } = useQuery(QUERY_USER, {
+    variables: { userId: user.data._id }
+  })
 
-    try {
-      const { data } = await queryUser({
-        variables: { _id: profile._id },
-      });
+  const savedLocations = data.user.savedLocations
+  console.log(savedLocations);
 
-      console.log(data)
-
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  fetchData()
+  if (error) {
+    console.log(error);
+  }
 
   return (
     <div>
-      <h1>${username}'s saved locations</h1>
       <div className='card-content'>
         <div className='content'>
-          {!savedLocations ? (
+          {savedLocations.length == 0 ? (
             <h1>No saved locations yet!</h1>
           ) : (
             <div>
