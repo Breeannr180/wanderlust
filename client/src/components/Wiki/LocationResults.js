@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
 import FeatureSearchCard from '../elements/FeatureSearchCard';
+import { ADD_LOCATION } from '../../utils/mutations';
 
 const LocationResults = (props) => {
   const [kind, setKind] = useState('amusements');
   const [openTripMapData, setOpenTripMapData] = useState([]);
   const [featureArray, setFeatures] = useState([]);
+  const [locationId, setLocationId] = useState('');
+  const [addLocation] = useMutation(ADD_LOCATION);
 
   const handleFeatureSearch = async () => {
     try {
@@ -32,6 +36,21 @@ const LocationResults = (props) => {
     }
   };
 
+  const saveLocation = async () => {
+    try {
+      const { data } = await addLocation({
+        variables: {
+          name: props.name,
+          lat: props.lat,
+          lon: props.lon,
+        },
+      });
+      setLocationId(data._id);
+    } catch (error) {
+      console.error('Error saving location:', error);
+    }
+  };
+
   return (
     <div className='card-body'>
       <div className=''>
@@ -49,7 +68,10 @@ const LocationResults = (props) => {
           <option value='tourist_facilities'>Tourist Facilities</option>
         </select>
         <button className='btn btn-primary' onClick={handleFeatureSearch}>
-          Save this location and search for interesting features nearby
+          Search for interesting features nearby
+        </button>
+        <button className='btn btn-secondary' onClick={saveLocation}>
+          Save this location
         </button>
         <div>
           {0 < featureArray.length ? (
@@ -61,6 +83,7 @@ const LocationResults = (props) => {
                   dist={feature.properties.dist}
                   rate={feature.properties.rate}
                   wikidata={feature.properties.wikidata}
+                  locationId={locationId}
                 />
               ))}
             </div>
