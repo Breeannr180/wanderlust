@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_FEATURE } from '../../utils/mutations';
 
+import WikidataImage from './WikidataImage';
+
 const FeatureSearchCard = ({ name, dist, rate, wikidata, locationId }) => {
   const [isSaved, setIsSaved] = useState(false);
 
@@ -35,6 +37,7 @@ const FeatureSearchCard = ({ name, dist, rate, wikidata, locationId }) => {
             <p>Distance: {dist}</p>
             <p>Rating: {rate}</p>
             <p>Wikidata: {wikidata}</p>
+            <WikidataImage wikidata={wikidata} />
             {/* //button to save feature */}
             {!isSaved ? (
               <button className='btn btn-secondary' onClick={saveFeature}>
