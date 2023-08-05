@@ -16,10 +16,10 @@ async function getOpenTripMapData(query) {
   }
 }
 
-async function getDestinationData(lon, lat) {
+async function getDestinationData(lon, lat, kind) {
   try {
     // Fetch place data based on the destination name
-    const placeUrl = `https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=${lon}&lat=${lat}&limit=10&apikey=${APIkey}`;
+    const placeUrl = `https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=${lon}&lat=${lat}&kinds=${kind}&limit=10&apikey=${APIkey}`;
     const placeResponse = await axios.get(placeUrl);
     const placeData = placeResponse.data;
 
