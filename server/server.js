@@ -36,8 +36,15 @@ app.get('/', (req, res) => {
 // OpenTrip route
 app.post('/api/opentripmap/destination', async (req, res) => {
   const location = req.body.location;
-  console.log('location', location);
   const locationData = await getOpenTripMapData(location);
+  res.status(200).json(locationData);
+});
+
+app.post('/api/opentripmap/features', async (req, res) => {
+  const lat = req.body.lat;
+  const lon = req.body.lon;
+  const kind = req.body.kind;
+  const locationData = await getDestinationData(lon, lat, kind);
   res.status(200).json(locationData);
 });
 
