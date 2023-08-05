@@ -16,31 +16,12 @@ async function getOpenTripMapData(query) {
   }
 }
 
-async function getDestinationData(lon, lat) {
+async function getDestinationData(lon, lat, kind) {
   try {
     // Fetch place data based on the destination name
-    const placeUrl = `https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=${lon}&lat=${lat}&limit=10&apikey=${APIkey}`;
+    const placeUrl = `https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=${lon}&lat=${lat}&kinds=${kind}&rate=3&limit=25&apikey=${APIkey}`;
     const placeResponse = await axios.get(placeUrl);
     const placeData = placeResponse.data;
-
-    // if (placeData.features.length > 0) {
-    //   const destinationId = placeData.features[0].properties.xid;
-
-    //   // Fetch images based on the destination ID
-    //   const imagesUrl = `https://api.opentripmap.com/0.1/en/places/xid/${destinationId}/images?apikey=${APIkey}`;
-    //   const imagesResponse = await axios.get(imagesUrl);
-    //   const imagesData = imagesResponse.data;
-
-    //   // Process the data as needed (e.g., extract relevant information, filter, etc.)
-    //   // Combine the information and images as required and return the result
-    //   return {
-    //     name: destinationName,
-    //     info: placeData.features[0].properties,
-    //     images: imagesData,
-    // //   };
-    // } else {
-    //   throw new Error('Destination not found');
-    // }
     return placeData;
   } catch (error) {
     console.error('Error fetching destination data:', error);
