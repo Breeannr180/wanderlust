@@ -1,12 +1,16 @@
 import React from 'react';
+import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_FEATURE } from '../../utils/mutations';
 
 const FeatureSearchCard = ({ name, dist, rate, wikidata, locationId }) => {
+  const [isSaved, setIsSaved] = useState(false);
+
   const [addFeature] = useMutation(ADD_FEATURE);
 
   const saveFeature = async () => {
     try {
+      if (!locationId) return;
       const { data } = await addFeature({
         variables: {
           locationId: locationId,
@@ -16,6 +20,7 @@ const FeatureSearchCard = ({ name, dist, rate, wikidata, locationId }) => {
           wikidata: wikidata,
         },
       });
+      if (data) setIsSaved(true);
     } catch (error) {
       console.error('Error saving feature:', error);
     }
@@ -31,9 +36,15 @@ const FeatureSearchCard = ({ name, dist, rate, wikidata, locationId }) => {
             <p>Rating: {rate}</p>
             <p>Wikidata: {wikidata}</p>
             {/* //button to save feature */}
-            <button className='btn btn-secondary' onClick={saveFeature}>
-              Save feature from this location
-            </button>
+            {!isSaved ? (
+              <button className='btn btn-secondary' onClick={saveFeature}>
+                Save feature from this location
+              </button>
+            ) : (
+              <button className='btn btn-secondary btn-disabled'>
+                Feature Saved!
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -8,6 +8,8 @@ const LocationResults = (props) => {
   const [openTripMapData, setOpenTripMapData] = useState([]);
   const [featureArray, setFeatures] = useState([]);
   const [locationId, setLocationId] = useState('');
+  const [isSaved, setIsSaved] = useState(false);
+
   const [addLocation] = useMutation(ADD_LOCATION);
 
   const handleFeatureSearch = async () => {
@@ -45,7 +47,10 @@ const LocationResults = (props) => {
           lon: props.lon,
         },
       });
-      setLocationId(data._id);
+      if (data) {
+        setLocationId(data._id);
+        setIsSaved(true);
+      }
     } catch (error) {
       console.error('Error saving location:', error);
     }
@@ -70,9 +75,15 @@ const LocationResults = (props) => {
         <button className='btn btn-primary' onClick={handleFeatureSearch}>
           Search for interesting features nearby
         </button>
-        <button className='btn btn-secondary' onClick={saveLocation}>
-          Save this location
-        </button>
+        {!isSaved ? (
+          <button className='btn btn-secondary' onClick={saveLocation}>
+            Save this location
+          </button>
+        ) : (
+          <button className='btn btn-secondary btn-disabled'>
+            Location Saved!
+          </button>
+        )}
         <div>
           {0 < featureArray.length ? (
             <div className='flex-col'>
