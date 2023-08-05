@@ -13,12 +13,12 @@ const Login = () => {
   const handleToggle = () => {
     setLoggingIn(!loggingIn);
   };
+
   const [login, { er, userData }] = useMutation(LOGIN_USER);
   const [addUser, { error, newUserData }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormState({
       ...formState,
       [name]: value,
@@ -29,11 +29,16 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const { newUserData } = await addUser({
-        variables: { ...formState },
+      const { username, password } = formState
+      const { data } = await addUser({
+        variables: { username, password },
       });
-
-      Auth.login(newUserData.addUser.token);
+      console.log(data);
+      if (data.addUser.token == 0) {
+        console.log('username taken');
+        return
+      }
+      Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);
     }
@@ -43,11 +48,12 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const { userData } = await login({
-        variables: { ...formState },
+      const { username, password } = formState
+      const { data } = await login({
+        variables: { username, password },
       });
 
-      Auth.login(userData.addUser.token);
+      Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
     }
@@ -61,7 +67,7 @@ const Login = () => {
             <h2 className='card-title'>Login</h2>
             <form
               className='form-control'
-              // onSubmit={loginUser}
+              onSubmit={loginUser}
             >
               <input
                 className='input input-bordered'
@@ -96,7 +102,7 @@ const Login = () => {
             <h2 className='card-title'>Sign Up</h2>
             <form
               className='form-control'
-              // onSubmit={createNewUser}
+              onSubmit={createNewUser}
             >
               <input
                 className='input input-bordered'
