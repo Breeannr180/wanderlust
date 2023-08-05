@@ -33,7 +33,11 @@ const Login = () => {
       const { data } = await addUser({
         variables: { username, password },
       });
-
+      console.log(data);
+      if (data.addUser.token == 0) {
+        console.log('username taken');
+        return
+      }
       Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);

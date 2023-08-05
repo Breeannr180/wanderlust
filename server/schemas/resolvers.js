@@ -19,9 +19,17 @@ const resolvers = {
   },
   Mutation: {
     addUser: async (parent, { username, password }) => {
-      const user = await User.create({ username, password });
-      const token = signToken(user);
-      return { token, user };
+      const existingUser = await User.findOne({ username: username })
+      console.log(existingUser);
+      if (existingUser === null) {
+        const user = await User.create({ username, password });
+        const token = signToken(user);
+        return { token, user };
+      }
+      else {
+        const token = "0"
+        return { token, existingUser }
+      }
     },
     addLocation: async (parent, { userId, name, lat, long }) => {
       const location = await Location.create({ name, lat, long })
