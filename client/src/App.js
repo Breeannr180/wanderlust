@@ -11,6 +11,7 @@ import Search from './components/Wiki/Search';
 import { Home, Login, Profile, Location } from './components/pages';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { ProfileProvider } from './utils/GlobalState';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -38,21 +39,23 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div>
-          <Header />
-          <Routes>
-            <Route exact path='/' element={<Home />} />
-            <Route exact path='/search' element={<Search />} />
-            <Route exact path='/login' element={<Login />} />
-            <Route exact path='/profile' element={<Profile />} />
-            <Route exact path='/location' element={<Location />} />
-          </Routes>
-          <Footer />
-        </div>
-      </Router>
-    </ApolloProvider>
+    <ProfileProvider>
+      <ApolloProvider client={client}>
+        <Router>
+          <div>
+            <Header />
+            <Routes>
+              <Route exact path='/' element={<Home />} />
+              <Route exact path='/search' element={<Search />} />
+              <Route exact path='/login' element={<Login />} />
+              <Route exact path='/profile/:id' element={<Profile />} />
+              <Route exact path='/location/:id' element={<Location />} />
+            </Routes>
+            <Footer />
+          </div>
+        </Router>
+      </ApolloProvider>
+    </ProfileProvider>
   );
 }
 
