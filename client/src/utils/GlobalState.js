@@ -6,6 +6,7 @@ const { Provider } = profileContext;
 
 const ProfileProvider = ({ value = [], ...props }) => {
   const [profile, setProfile] = useState({
+    _id: '',
     username: '',
     savedLocations: [],
   });
