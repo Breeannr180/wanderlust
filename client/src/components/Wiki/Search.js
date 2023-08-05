@@ -102,12 +102,15 @@ const Search = () => {
       </div>
       {openTripMapData ? (
         <div className='card card-bordered'>
-          <div>{JSON.stringify(openTripMapData)}</div>
-          <LocationResults
-            name={openTripMapData.name}
-            lat={openTripMapData.lat}
-            lon={openTripMapData.lon}
-          />
+          {openTripMapData.status === 'OK' ? (
+            <LocationResults
+              name={openTripMapData.name}
+              lat={openTripMapData.lat}
+              lon={openTripMapData.lon}
+            />
+          ) : (
+            <div>Location not found!</div>
+          )}
         </div>
       ) : null}
     </div>
