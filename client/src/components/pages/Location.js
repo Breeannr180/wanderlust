@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import { useParams } from 'react-router-dom';
 import FeatureCard from '../elements/FeatureCard';
 
 const Location = () => {
   const { _id: locationId } = useParams();
+  const [savedFeatures, setSavedFeatures] = useState([]);
 
   return (
     <div>
