@@ -1,7 +1,10 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import FeatureCard from '../elements/FeatureCard';
 
-const Location = ({ name, savedFeatures }) => {
+const Location = () => {
+  const { _id: locationId } = useParams();
+
   return (
     <div>
       <div className='card-content'>
