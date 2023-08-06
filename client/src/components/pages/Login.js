@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER, LOGIN_USER } from '../../utils/mutations.js';
 import Auth from '../../utils/auth.js';
-import { useProfileContext } from '../../utils/GlobalState.js';
 
 const Login = () => {
   const [formState, setFormState] = useState({
@@ -17,7 +16,6 @@ const Login = () => {
 
   const [login, { er, userData }] = useMutation(LOGIN_USER);
   const [addUser, { error, newUserData }] = useMutation(ADD_USER);
-  const [profile, setProfile] = useProfileContext();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -40,7 +38,7 @@ const Login = () => {
         console.log('username taken');
         return
       }
-      setProfile({ _id: data.addUser._id, username: data.addUser.username })
+
       Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);
@@ -55,7 +53,7 @@ const Login = () => {
       const { data } = await login({
         variables: { username, password },
       });
-      setProfile({ _id: data.login._id, username: data.login.username })
+
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
