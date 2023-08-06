@@ -14,8 +14,8 @@ const Login = () => {
     setLoggingIn(!loggingIn);
   };
 
-  const [login, { er, userData }] = useMutation(LOGIN_USER);
-  const [addUser, { error, newUserData }] = useMutation(ADD_USER);
+  const [login, { loginErr, loginData }] = useMutation(LOGIN_USER);
+  const [addUser, { addErr, addUserData }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -29,14 +29,14 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const { username, password } = formState
+      const { username, password } = formState;
       const { data } = await addUser({
         variables: { username, password },
       });
       console.log(data);
-      if (data.addUser.token == 0) {
+      if (data.addUser.token === 0) {
         console.log('username taken');
-        return
+        return;
       }
 
       Auth.login(data.addUser.token);
@@ -49,7 +49,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const { username, password } = formState
+      const { username, password } = formState;
       const { data } = await login({
         variables: { username, password },
       });
@@ -66,10 +66,7 @@ const Login = () => {
         {loggingIn ? (
           <div className='card-body'>
             <h2 className='card-title'>Login</h2>
-            <form
-              className='form-control'
-              onSubmit={loginUser}
-            >
+            <form className='form-control' onSubmit={loginUser}>
               <input
                 className='input input-bordered'
                 placeholder='Username'
@@ -101,10 +98,7 @@ const Login = () => {
         ) : (
           <div className='card-body'>
             <h2 className='card-title'>Sign Up</h2>
-            <form
-              className='form-control'
-              onSubmit={createNewUser}
-            >
+            <form className='form-control' onSubmit={createNewUser}>
               <input
                 className='input input-bordered'
                 type='text'
