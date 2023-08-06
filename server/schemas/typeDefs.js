@@ -10,8 +10,8 @@ const typeDefs = gql`
   type Location {
     _id: ID!
     name: String!
-    lat: Int!
-    long: Int!
+    lat: Float!
+    long: Float!
     savedFeatures: [Feature]
   }
 
@@ -37,8 +37,14 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(username: String!, password: String!): Auth
-    addLocation(userId: ID!, name: String!, lat: Int!, long: Int!): Location
-    addFeature(locationId: ID!, name: String!, dist: Int!, rate: Int!, wikidata: String!): Feature
+    addLocation(userId: ID!, name: String!, lat: Float!, long: Float!): Location
+    addFeature(
+      locationId: ID!
+      name: String!
+      dist: Int!
+      rate: Int!
+      wikidata: String!
+    ): Feature
     removeUser(userId: ID!): User
     removeLocation(userId: ID!, locationId: ID!): Location
     removeFeature(locationId: ID!, featureId: ID!): Feature

@@ -13,7 +13,12 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_LOCATION = gql`
-  mutation addLocation($userId: ID!, $name: String!, $lat: Int!, $long: Int!) {
+  mutation addLocation(
+    $userId: ID!
+    $name: String!
+    $lat: Float!
+    $long: Float!
+  ) {
     addLocation(userId: $userId, name: $name, lat: $lat, long: $long) {
       _id
       name
