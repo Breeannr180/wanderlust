@@ -52,7 +52,7 @@ const Search = () => {
   };
 
   return (
-    <div>
+    <div className='container'>
       {/* <div className='search-section'>
         <h2>Specific Destination</h2>
         <input
@@ -88,7 +88,7 @@ const Search = () => {
 
       <div className='card card-bordered'>
         <div className='card-body'>
-          <h1 className='card-header'>Find your travel destination</h1>
+          <h1 className='card-title'>Find your travel destination</h1>
           <input
             className='input input-bordered'
             type='text'

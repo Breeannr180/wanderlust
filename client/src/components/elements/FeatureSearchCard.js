@@ -29,7 +29,7 @@ const FeatureSearchCard = ({ name, dist, rate, wikidata, locationId }) => {
   };
 
   return (
-    <div className='card bg-neutral-content card-bordered flex-4'>
+    <div className='card bg-neutral-content card-bordered'>
       <div className='card-body'>
         <h3 className='card-title'>{name}</h3>
         <div className='card-content'>

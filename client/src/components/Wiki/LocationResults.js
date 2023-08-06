@@ -60,9 +60,9 @@ const LocationResults = (props) => {
   return (
     <div className='card-body'>
       <div className=''>
-        <h1>{props.name}</h1>
+        <h1 className='card-title'>{props.name}</h1>
         <select
-          className='form-select'
+          className='select select-bordered select-primary'
           id='kind'
           aria-label='Default select example'
           value={kind}
@@ -85,9 +85,9 @@ const LocationResults = (props) => {
             Location Saved!
           </button>
         )}
-        <div>
+        <div className='container'>
           {0 < featureArray.length ? (
-            <div className='flex-col'>
+            <div className='grid grid-cols-3 gap-2'>
               {featureArray?.map((feature) => (
                 <FeatureSearchCard
                   key={feature.properties.xid}
