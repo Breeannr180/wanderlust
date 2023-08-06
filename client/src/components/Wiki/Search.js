@@ -3,56 +3,57 @@ import SearchResults from './SearchResults';
 import LocationResults from './LocationResults';
 
 const Search = () => {
-  const [specificQuery, setSpecificQuery] = useState('');
-  const [specificResults, setSpecificResults] = useState(null);
-  const [activitiesQuery, setActivitiesQuery] = useState('');
-  const [activitiesResults, setActivitiesResults] = useState(null);
-  const [popularQuery, setPopularQuery] = useState('');
-  const [popularResults, setPopularResults] = useState(null);
+  // const [specificQuery, setSpecificQuery] = useState('');
+  // const [specificResults, setSpecificResults] = useState(null);
+  // const [activitiesQuery, setActivitiesQuery] = useState('');
+  // const [activitiesResults, setActivitiesResults] = useState(null);
+  // const [popularQuery, setPopularQuery] = useState('');
+  // const [popularResults, setPopularResults] = useState(null);
+  // const [searchType, setSearchType] = useState('');
+
   const [query, setQuery] = useState('');
   const [openTripMapData, setOpenTripMapData] = useState(null);
-  const [searchType, setSearchType] = useState('');
 
   const handleSearch = async () => {
     try {
-      if (searchType === 'specific') {
-        const response = await fetch(
-          `/api/opentripmap/destination?query=${specificQuery}`
-        );
-        const data = await response.json();
-        setSpecificResults(data.features);
-      } else if (searchType === 'activities') {
-        const response = await fetch(
-          `/api/opentripmap/destination?query=${activitiesQuery}`
-        );
-        const data = await response.json();
-        setActivitiesResults(data.features);
-      } else if (searchType === 'popular') {
-        const response = await fetch(
-          `/api/opentripmap/destination?query=${popularQuery}`
-        );
-        const data = await response.json();
-        setPopularResults(data.features);
-      } else {
-        const response = await fetch('/api/opentripmap/destination', {
-          method: 'POST',
-          body: JSON.stringify({ location: query }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+      // if (searchType === 'specific') {
+      //   const response = await fetch(
+      //     `/api/opentripmap/destination?query=${specificQuery}`
+      //   );
+      //   const data = await response.json();
+      //   setSpecificResults(data.features);
+      // } else if (searchType === 'activities') {
+      //   const response = await fetch(
+      //     `/api/opentripmap/destination?query=${activitiesQuery}`
+      //   );
+      //   const data = await response.json();
+      //   setActivitiesResults(data.features);
+      // } else if (searchType === 'popular') {
+      //   const response = await fetch(
+      //     `/api/opentripmap/destination?query=${popularQuery}`
+      //   );
+      //   const data = await response.json();
+      //   setPopularResults(data.features);
+      // } else {
+      const response = await fetch('/api/opentripmap/destination', {
+        method: 'POST',
+        body: JSON.stringify({ location: query }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-        const data = await response.json();
-        setOpenTripMapData(data);
-      }
+      const data = await response.json();
+      setOpenTripMapData(data);
+      // }
     } catch (error) {
       console.error('Error fetching OpenTripMap data:', error);
     }
   };
 
   return (
-    <div>
-      <div className='search-section'>
+    <div className='container'>
+      {/* <div className='search-section'>
         <h2>Specific Destination</h2>
         <input
           type='text'
@@ -83,11 +84,11 @@ const Search = () => {
         />
         <button onClick={() => setSearchType('popular')}>Search</button>
       </div>
-      {popularResults && <SearchResults results={popularResults} />}
+      {popularResults && <SearchResults results={popularResults} />} */}
 
       <div className='card card-bordered'>
         <div className='card-body'>
-          <h1 className='card-header'>Find your travel destination</h1>
+          <h1 className='card-title'>Find your travel destination</h1>
           <input
             className='input input-bordered'
             type='text'
