@@ -9,15 +9,17 @@ const Nav = () => {
       <Link to='/search'>
         <button className='btn btn-primary'>Search</button>
       </Link>
-      <Link to='/profile'>
-        <button className='btn'>Saved Locations</button>
-      </Link>
       {Auth.loggedIn() ? (
+        <div>
+          <Link to='/profile'>
+            <button className='btn'>Saved Locations</button>
+          </Link>
+          <button className='btn' onClick={Auth.logout}>Logout</button>
+        </div>
+      ) : (
         <Link to='/login'>
           <button className='btn'>Login</button>
         </Link>
-      ) : (
-        <button className='btn' onClick={Auth.logout}>Logout</button>
       )}
     </div>
   );
