@@ -30,7 +30,7 @@ const Profile = () => {
     <div>
       <div className='card-content'>
         <div className='content'>
-          {savedLocations.length == 0 ? (
+          {savedLocations.length === 0 ? (
             <h1>No saved locations yet!</h1>
           ) : (
             <div>
