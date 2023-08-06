@@ -7,7 +7,7 @@ import auth from '../../utils/auth';
 const Profile = () => {
 
   const user = auth.getProfile()
-  console.log(user.data);
+
   const id = user.data._id
 
   const { loading, error, data } = useQuery(QUERY_USER, {
@@ -22,9 +22,7 @@ const Profile = () => {
     console.log(error);
   }
 
-  console.log(data);
   const savedLocations = data.user.savedLocations
-  console.log(savedLocations);
 
   return (
     <div>
