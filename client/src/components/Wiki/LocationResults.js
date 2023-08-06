@@ -42,6 +42,7 @@ const LocationResults = (props) => {
     try {
       const { data } = await addLocation({
         variables: {
+          userId: localStorage.getItem('userId'),
           name: props.name,
           lat: props.lat,
           lon: props.lon,
