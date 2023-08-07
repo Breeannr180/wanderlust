@@ -9,6 +9,7 @@ import {
   dubaiImage,
   japanImage,
   romeImage,
+  londonImage
 } from '../../images/carouselImages';
 
 const imageSize = {
@@ -48,6 +49,9 @@ const ImageCarousel = () => {
         </div>
         <div className='flex flex-row items-center justify-center'>
           <img src={dubaiImage} alt='Dubai' style={imageSize} />
+        </div>
+        <div className='flex flex-row items-center justify-center'>
+          <img src={londonImage} alt='London' style={imageSize} />
         </div>
       </Carousel>
     </div>
