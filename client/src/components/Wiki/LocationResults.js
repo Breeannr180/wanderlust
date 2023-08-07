@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import FeatureSearchCard from '../elements/FeatureSearchCard';
 import { ADD_LOCATION } from '../../utils/mutations';
+import FeatureSearchCard from '../elements/FeatureSearchCard';
+import auth from '../../utils/auth';
 
 const LocationResults = (props) => {
   const [kind, setKind] = useState('amusements');
@@ -39,13 +40,16 @@ const LocationResults = (props) => {
   };
 
   const saveLocation = async () => {
+    if (!auth.loggedIn()) {
+      return alert('You must be logged in to save a location!');
+    }
     try {
       const { data } = await addLocation({
         variables: {
           userId: localStorage.getItem('userId'),
           name: props.name,
           lat: props.lat,
-          lon: props.lon,
+          long: props.lon,
         },
       });
       if (data) {
