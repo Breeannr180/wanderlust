@@ -11,16 +11,16 @@ import japanImage from '../../images/Japan.jpg';
 import romeImage from '../../images/Rome.jpg';
 
 const imageSize = {
-  width: '500px', 
-  height: '300px', 
+  width: '500px',
+  height: '300px',
 };
 
 const Home = () => {
   return (
-      <div className='home-container mt-24 px-4'>
-        <div className='home'>
-          <h1>WanderLust</h1>
-          <h2>Explore the world with us!</h2>
+    <div className='home-container mt-24 px-4'>
+      <div className='home'>
+        <h1>WanderLust</h1>
+        <h2>Explore the world with us!</h2>
       </div>
       <div className='carousel-container mt-8'>
         <Carousel
@@ -32,7 +32,7 @@ const Home = () => {
           autoPlay={true}
           interval={3000} // Set the interval (in milliseconds) for automatic carousel sliding
         >
-           <div className='flex flex-row items-center justify-center'>
+          <div className='flex flex-row items-center justify-center'>
             <img src={parisImage} alt='Paris' style={imageSize} />
           </div>
           <div className='flex flex-row items-center justify-center'>
@@ -53,10 +53,10 @@ const Home = () => {
           <div className='flex flex-row items-center justify-center'>
             <img src={dubaiImage} alt='Dubai' style={imageSize} />
           </div>
-        </Carousel> 
+        </Carousel>
       </div>
     </div>
   );
-}; 
+};
 
 export default Home;
