@@ -64,7 +64,7 @@ const Login = () => {
       <div className='card'>
         {loggingIn ? (
           <div className='card-body'>
-            <h2 className='card-title'>Login</h2>
+            <h2 className='card-title text-primary'>Login</h2>
             <form className='form-control' onSubmit={loginUser}>
               <input
                 className='input input-bordered'
@@ -90,13 +90,14 @@ const Login = () => {
               </div>
             </form>
 
-            <button type='button' onClick={handleToggle}>
+            <button className='text-blue-500 font-semibold'
+            type='button' onClick={handleToggle}>
               Sign Up Instead
             </button>
           </div>
         ) : (
           <div className='card-body'>
-            <h2 className='card-title'>Sign Up</h2>
+            <h2 className='card-title text-primary'>Sign Up</h2>
             <form className='form-control' onSubmit={createNewUser}>
               <input
                 className='input input-bordered'
@@ -122,8 +123,10 @@ const Login = () => {
                 </button>
               </div>
             </form>
-            <button type='button' onClick={handleToggle}>
-              Already have an account? Log In Here
+            <button className='text-blue-500 font-semibold'
+            type='button' 
+            onClick={handleToggle}>
+            Already have an account? Log In Here
             </button>
           </div>
         )}

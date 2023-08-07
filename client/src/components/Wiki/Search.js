@@ -5,6 +5,7 @@ const Search = () => {
   const [query, setQuery] = useState('');
   const [openTripMapData, setOpenTripMapData] = useState(null);
   // const [destinationData, setDestinationData] = useState({});
+
   const handleSearch = async () => {
     try {
       const response = await fetch('/api/opentripmap/destination', {
@@ -18,6 +19,7 @@ const Search = () => {
       const data = await response.json();
       console.log('OpenTripMap data:', data);
       // setDestinationData(data);
+
       setOpenTripMapData(data);
       // }
     } catch (error) {
@@ -32,6 +34,7 @@ const Search = () => {
           <h1 className='card-title text-primary'>
             Find your travel destination
           </h1>
+
           <input
             className='input input-bordered text-neutral'
             type='text'
