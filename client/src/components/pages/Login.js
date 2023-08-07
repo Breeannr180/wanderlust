@@ -60,8 +60,8 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div className='card'>
+    <div className='container'>
+      <div className='card card-bordered'>
         {loggingIn ? (
           <div className='card-body'>
             <h2 className='card-title text-primary'>Login</h2>
@@ -84,14 +84,17 @@ const Login = () => {
                 required
               />
               <div className='card-actions'>
-                <button className='btn btn-wide' type='submit'>
+                <button className='btn btn-wide btn-primary' type='submit'>
                   Log In
                 </button>
               </div>
             </form>
 
-            <button className='text-blue-500 font-semibold'
-            type='button' onClick={handleToggle}>
+            <button
+              className='text-blue-500 font-semibold'
+              type='button'
+              onClick={handleToggle}
+            >
               Sign Up Instead
             </button>
           </div>
@@ -118,15 +121,17 @@ const Login = () => {
                 required
               />
               <div className='card-actions'>
-                <button className='btn btn-wide' type='submit'>
+                <button className='btn btn-wide btn-primary' type='submit'>
                   Sign Up
                 </button>
               </div>
             </form>
-            <button className='text-blue-500 font-semibold'
-            type='button' 
-            onClick={handleToggle}>
-            Already have an account? Log In Here
+            <button
+              className='text-blue-500 font-semibold'
+              type='button'
+              onClick={handleToggle}
+            >
+              Already have an account? Log In Here
             </button>
           </div>
         )}

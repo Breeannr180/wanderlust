@@ -45,9 +45,7 @@ function App() {
           <div className='header-container'>
             <Header />
           </div>
-          {/* Container for the carousel */}
-          <div className='carousel-container'>/</div>
-          <div className='main-content h-screen'>
+          <div className='main-content h-screen pt-4'>
             <Routes>
               <Route exact path='/' element={<Home />} />
               <Route exact path='/search' element={<Search />} />
