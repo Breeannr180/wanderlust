@@ -40,14 +40,14 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className='app-container justify-content center bg-black'>
+        <div className='app-container justify-content center bg-neutral-focus text-primary'>
           {/* Container for the Header and Nav Bar */}
           <div className='header-container'>
             <Header />
           </div>
           {/* Container for the carousel */}
           <div className='carousel-container'>/</div>
-          <div className='main-content'>
+          <div className='main-content h-screen'>
             <Routes>
               <Route exact path='/' element={<Home />} />
               <Route exact path='/search' element={<Search />} />
