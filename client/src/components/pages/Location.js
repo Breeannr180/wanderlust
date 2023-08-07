@@ -5,15 +5,14 @@ import { QUERY_LOCATIONS } from '../../utils/queries';
 import FeatureCard from '../elements/FeatureCard';
 
 const Location = () => {
-
   const { locationId } = useParams();
 
   const { loading, error, data } = useQuery(QUERY_LOCATIONS, {
-    variables: { locationId: locationId }
-  })
+    variables: { locationId: locationId },
+  });
 
   if (loading) {
-    return <h1>Loading...</h1>
+    return <h1>Loading...</h1>;
   }
 
   if (error) {
@@ -26,7 +25,7 @@ const Location = () => {
     <div>
       <div className='card-content'>
         <div className='content'>
-          {!savedFeatures ? (
+          {savedFeatures.length < 1 ? (
             <h1>No saved features yet!</h1>
           ) : (
             <div>
