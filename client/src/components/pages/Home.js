@@ -2,13 +2,15 @@ import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import parisImage from '../../images/Paris.jpg';
-import newYorkImage from '../../images/New York.jpg';
-import singaporeImage from '../../images/Singapore.jpg';
-import sydneyImage from '../../images/Sydney.jpg';
-import dubaiImage from '../../images/Dubai.jpg';
-import japanImage from '../../images/Japan.jpg';
-import romeImage from '../../images/Rome.jpg';
+import {
+  parisImage,
+  newYorkImage,
+  singaporeImage,
+  sydneyImage,
+  dubaiImage,
+  japanImage,
+  romeImage,
+} from '../../images/carouselImages';
 
 const imageSize = {
   width: '500px',
