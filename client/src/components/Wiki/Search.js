@@ -4,7 +4,7 @@ import LocationResults from './LocationResults';
 const Search = () => {
   const [query, setQuery] = useState('');
   const [openTripMapData, setOpenTripMapData] = useState(null);
-
+  const [destinationData, setDestinationData] = useState({}); 
   const handleSearch = async () => {
     try {
       const response = await fetch('/api/opentripmap/destination', {
@@ -16,6 +16,8 @@ const Search = () => {
       });
 
       const data = await response.json();
+      console.log('OpenTripMap data:', data);
+      setDestinationData(data);
       setOpenTripMapData(data);
       // }
     } catch (error) {
@@ -40,6 +42,7 @@ const Search = () => {
           </button>
         </div>
       </div>
+     {/* {destinationData.name} */}
       {openTripMapData ? (
         <div className='card card-bordered'>
           {openTripMapData.status === 'OK' ? (
