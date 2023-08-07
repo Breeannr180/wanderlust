@@ -31,7 +31,7 @@ const Profile = () => {
     <div>
       <div className='card-content'>
         <div className='content'>
-          {savedLocations.length === 0 ? (
+          {savedLocations.length < 1 ? (
             <h1>No saved locations yet!</h1>
           ) : (
             <div>
@@ -44,11 +44,6 @@ const Profile = () => {
               ))}
             </div>
           )}
-        </div>
-      </div>
-      <div className='grid-container'>
-        <div className='grid-item'>
-          <LocationCard />
         </div>
       </div>
     </div>
