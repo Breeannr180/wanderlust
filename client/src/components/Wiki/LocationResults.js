@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_LOCATION } from '../../utils/mutations';
-import FeatureSearchCard from '../elements/FeatureSearchCard';
+import FeatureSearchGrid from './FeatureSearchGrid';
 import auth from '../../utils/auth';
 
 const LocationResults = (props) => {
@@ -89,26 +89,10 @@ const LocationResults = (props) => {
             Location Saved!
           </button>
         )}
-        <div className='container'>
-          {0 < featureArray.length ? (
-            <div className='grid grid-cols-3 gap-2'>
-              {featureArray?.map((feature) => (
-                <FeatureSearchCard
-                  key={feature.properties.xid}
-                  name={feature.properties.name}
-                  dist={feature.properties.dist}
-                  rate={feature.properties.rate}
-                  wikidata={feature.properties.wikidata}
-                  locationId={locationId}
-                />
-              ))}
-            </div>
-          ) : (
-            <div>
-              <h1>No features found!</h1>
-            </div>
-          )}
-        </div>
+        <FeatureSearchGrid
+          featureArray={featureArray}
+          locationId={locationId}
+        />
       </div>
     </div>
   );
