@@ -1,7 +1,8 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const LocationCard = ({ name, dist, rate, wikidata }) => {
+const FeatureCard = ({ name, dist, rate, wikidata }) => {
+  const wikidataUrl = `https://www.wikidata.org/wiki/${wikidata}`;
   return (
     <div className='card'>
       <div className='card-header'>
@@ -11,11 +12,13 @@ const LocationCard = ({ name, dist, rate, wikidata }) => {
         <div className='content'>
           <p>Distance: {dist}</p>
           <p>Rating: {rate}</p>
-          <p>Wikidata: {wikidata}</p>
+          <p>
+            <Link to={wikidataUrl}>View on Wikidata</Link>
+          </p>
         </div>
       </div>
     </div>
   );
 };
 
-export default LocationCard;
+export default FeatureCard;
