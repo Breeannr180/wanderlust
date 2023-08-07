@@ -20,7 +20,6 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, { username, password }) => {
       const existingUser = await User.findOne({ username: username })
-      console.log(existingUser);
       if (existingUser === null) {
         const user = await User.create({ username, password });
         const token = signToken(user);
