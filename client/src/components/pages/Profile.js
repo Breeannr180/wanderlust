@@ -5,24 +5,27 @@ import { QUERY_USER } from '../../utils/queries';
 import auth from '../../utils/auth';
 
 const Profile = () => {
+  if (!auth.loggedIn()) {
+    window.location.assign('/login');
+  }
 
-  const user = auth.getProfile()
+  const user = auth.getProfile();
 
-  const id = user.data._id
+  const id = user.data._id;
 
   const { loading, error, data } = useQuery(QUERY_USER, {
-    variables: { userId: id }
-  })
+    variables: { userId: id },
+  });
 
   if (loading) {
-    return <h1>Loading...</h1>
+    return <h1>Loading...</h1>;
   }
 
   if (error) {
     console.log(error);
   }
 
-  const savedLocations = data.user.savedLocations
+  const savedLocations = data.user.savedLocations;
 
   return (
     <div>
@@ -33,7 +36,11 @@ const Profile = () => {
           ) : (
             <div>
               {savedLocations.map((location) => (
-                <LocationCard key={location._id} name={location.name} locationId={location._id} />
+                <LocationCard
+                  key={location._id}
+                  name={location.name}
+                  locationId={location._id}
+                />
               ))}
             </div>
           )}
