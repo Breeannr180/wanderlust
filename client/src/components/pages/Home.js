@@ -13,17 +13,16 @@ import romeImage from '../../images/Rome.jpg';
 const imageSize = {
   width: '500px', 
   height: '300px', 
-  // objectFit: 'cover', 
 };
 
 const Home = () => {
   return (
-    <div>
-      <div className='home'>
-        <h1>WanderLust</h1>
-        <h2>Explore the world with us!</h2>
+      <div className='home-container mt-24 px-4'>
+        <div className='home'>
+          <h1>WanderLust</h1>
+          <h2>Explore the world with us!</h2>
       </div>
-      <div class='carousel-container'>
+      <div className='carousel-container mt-8'>
         <Carousel
           showArrows={true}
           infiniteLoop={true}
@@ -54,10 +53,10 @@ const Home = () => {
           <div className='flex flex-row items-center justify-center'>
             <img src={dubaiImage} alt='Dubai' style={imageSize} />
           </div>
-        </Carousel>
+        </Carousel> 
       </div>
     </div>
   );
-};
+}; 
 
 export default Home;
