@@ -40,7 +40,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
+        <div className="container justify-content center ">
           <Header />
           <Routes>
             <Route exact path='/' element={<Home />} />
