@@ -33,7 +33,7 @@ const Profile = () => {
           ) : (
             <div>
               {savedLocations.map((location) => (
-                <LocationCard key={location._id} name={location.name} />
+                <LocationCard key={location._id} name={location.name} locationId={location._id} />
               ))}
             </div>
           )}
