@@ -29,7 +29,7 @@ const Search = () => {
     <div className='container'>
       <div className='card card-bordered'>
         <div className='card-body'>
-          <h1 className='card-title'>Find your travel destination</h1>
+          <h1 className='card-title text-primary'>Find your travel destination</h1>
           <input
             className='input input-bordered'
             type='text'

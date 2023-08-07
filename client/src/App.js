@@ -40,7 +40,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className='app-container justify-content center'>
+        <div className='app-container justify-content center bg-black'>
           {/* Container for the Header and Nav Bar */}
           <div className='header-container'>
             <Header />
