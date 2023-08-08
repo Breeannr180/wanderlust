@@ -68,10 +68,8 @@ export const LOGIN_USER = gql`
 export const REMOVE_USER = gql`
   mutation removeUser($userId: ID!) {
     removeUser(userId: $userId) {
-      user {
         _id
         username
-      }
     }
   }
 `;
