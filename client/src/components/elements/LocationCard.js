@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { REMOVE_LOCATION } from '../../utils/mutations';
 
 const LocationCard = ({ name, locationId }) => {
   const [removeLocation] = useMutation(REMOVE_LOCATION);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   const deleteLocation = async () => {
     try {
       const { data } = await removeLocation({
-        variables: { locationId: locationId },
+        variables: {
+          userId: localStorage.getItem('userId'),
+          locationId: locationId,
+        },
       });
-      // if (data) {
-      //   window.location.assign('/profile');
-      // }
+      if (data) {
+        setIsDeleted(true);
+      }
     } catch (error) {
       console.error('Error deleting location:', error);
     }
   };
+
+  if (isDeleted) {
+    return null;
+  }
 
   return (
     <div className='card'>

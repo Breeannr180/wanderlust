@@ -33,7 +33,13 @@ export const ADD_LOCATION = gql`
 `;
 
 export const ADD_FEATURE = gql`
-  mutation addFeature($locationId: ID!, $name: String!, $dist: Float!, $rate: Int!, $wikidata: String!) {
+  mutation addFeature(
+    $locationId: ID!
+    $name: String!
+    $dist: Float!
+    $rate: Int!
+    $wikidata: String!
+  ) {
     addFeature(
       locationId: $locationId
       name: $name
@@ -73,10 +79,8 @@ export const REMOVE_USER = gql`
 export const REMOVE_LOCATION = gql`
   mutation removeLocation($userId: ID!, $locationId: ID!) {
     removeLocation(userId: $userId, locationId: $locationId) {
-      location {
-        _id
-        name
-      }
+      _id
+      name
     }
   }
 `;
@@ -84,8 +88,8 @@ export const REMOVE_LOCATION = gql`
 export const REMOVE_FEATURE = gql`
   mutation removeFeature($locationId: ID!, $featureId: ID!) {
     removeFeature(locationId: $locationId, featureId: $featureId) {
-       _id
-       name
+      _id
+      name
     }
   }
 `;
