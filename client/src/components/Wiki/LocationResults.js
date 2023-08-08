@@ -37,28 +37,6 @@ const LocationResults = (props) => {
     }
   };
 
-  const saveLocation = async () => {
-    if (!auth.loggedIn()) {
-      return alert('You must be logged in to save a location!');
-    }
-    try {
-      const { data } = await addLocation({
-        variables: {
-          userId: localStorage.getItem('userId'),
-          name: props.name,
-          lat: props.lat,
-          long: props.lon,
-        },
-      });
-      if (data) {
-        setLocationId(data._id);
-        setIsSaved(true);
-      }
-    } catch (error) {
-      console.error('Error saving location:', error);
-    }
-  };
-
   return (
     <div className='card-body'>
       <div className=''>
@@ -78,15 +56,6 @@ const LocationResults = (props) => {
         <button className='btn btn-primary' onClick={handleFeatureSearch}>
           Search for interesting features nearby
         </button>
-        {/* {!isSaved ? (
-          <button className='btn btn-secondary' onClick={saveLocation}>
-            Save this location
-          </button>
-        ) : (
-          <button className='btn btn-secondary btn-disabled'>
-            Location Saved!
-          </button>
-        )} */}
         <FeatureSearchGrid
           featureArray={featureArray}
           locationName={props.name}

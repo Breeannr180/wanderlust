@@ -7,7 +7,6 @@ import auth from '../../utils/auth';
 
 const FeatureSearchCard = ({ name, dist, rate, wikidata, locationName, lat, long }) => {
   const [isSaved, setIsSaved] = useState(false);
-  // const [locationId, setLocationId] = useState('');
 
   const [addLocation] = useMutation(ADD_LOCATION);
   const [addFeature] = useMutation(ADD_FEATURE);
