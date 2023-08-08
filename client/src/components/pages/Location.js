@@ -34,10 +34,12 @@ const Location = () => {
               {savedFeatures.map((feature) => (
                 <FeatureCard
                   key={feature._id}
+                  id={feature._id}
                   name={feature.name}
                   dist={feature.dist}
                   rate={feature.rate}
                   wikidata={feature.wikidata}
+                  locationId={locationId}
                 />
               ))}
             </div>
