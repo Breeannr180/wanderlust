@@ -6,7 +6,7 @@ import auth from '../../utils/auth';
 
 const LocationResults = (props) => {
   const [kind, setKind] = useState('amusements');
-  const [openTripMapData, setOpenTripMapData] = useState([]);
+  // const [openTripMapData, setOpenTripMapData] = useState([]);
   const [featureArray, setFeatures] = useState([]);
   const [locationId, setLocationId] = useState('');
   const [isSaved, setIsSaved] = useState(false);
@@ -28,12 +28,10 @@ const LocationResults = (props) => {
       });
 
       const data = await response.json();
-      setOpenTripMapData(data);
-      const temp = openTripMapData.features.filter(
+      const temp = data.features.filter(
         (feature) => feature.properties.rate > 0 && feature.properties.wikidata
       );
       setFeatures(temp);
-      console.log(featureArray);
     } catch (error) {
       console.error('Error fetching OpenTripMap data:', error);
     }
