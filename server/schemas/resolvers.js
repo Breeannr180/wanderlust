@@ -56,12 +56,13 @@ const resolvers = {
       return Location.findOneAndDelete({ _id: locationId });
     },
     removeFeature: async (parent, { locationId, featureId }) => {
+      const removedFeature = Feature.findOneAndDelete({ _id: featureId })
       await Location.findOneAndUpdate(
         { _id: locationId },
         { $pull: { savedFeatures: { _id: featureId } } },
         { new: true }
       );
-      return Feature.findOneAndDelete({ _id: featureId });
+      return removedFeature;
     },
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username }).populate('savedLocations');
