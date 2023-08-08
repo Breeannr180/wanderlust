@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { REMOVE_FEATURE } from '../../utils/mutations';
@@ -7,11 +7,11 @@ const FeatureCard = ({ id, name, dist, rate, wikidata, locationId }) => {
   const wikidataUrl = `https://www.wikidata.org/wiki/${wikidata}`;
   const km = dist / 1000
 
+  const [isDeleted, setIsDeleted] = useState(false);
+
   const [removeFeature] = useMutation(REMOVE_FEATURE);
 
   const deleteFeature = async () => {
-    console.log(id);
-    console.log(locationId);
     try {
       const data = await removeFeature({
         variables: {
@@ -20,11 +20,15 @@ const FeatureCard = ({ id, name, dist, rate, wikidata, locationId }) => {
         },
       });
       if (data) {
-        console.log("deleted successfully");
+        setIsDeleted(true);
       }
     } catch (error) {
       console.error('Error deleting feature:', error);
     }
+  }
+
+  if (isDeleted) {
+    return null;
   }
 
   return (
