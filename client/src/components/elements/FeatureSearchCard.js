@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_FEATURE } from '../../utils/mutations';
 
-import WikidataImage from './WikidataImage';
-
 const FeatureSearchCard = ({ name, dist, rate, wikidata, locationId }) => {
   const [isSaved, setIsSaved] = useState(false);
 
