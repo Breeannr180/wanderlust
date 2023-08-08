@@ -25,8 +25,7 @@ const resolvers = {
         const token = signToken(user);
         return { token, user };
       } else {
-        const token = '0';
-        return { token, existingUser };
+        return { existingUser };
       }
     },
     addLocation: async (parent, { userId, name, lat, long }) => {
