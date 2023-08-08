@@ -30,8 +30,7 @@ const FeatureSearchCard = ({ name, dist, rate, wikidata, locationName, lat, long
 
   const saveFeature = async (locId) => {
     try {
-      // if (!locationId) return;
-      const { data } = await addFeature({
+      const data = await addFeature({
         variables: {
           locationId: locId,
           name: name,
@@ -86,6 +85,7 @@ const FeatureSearchCard = ({ name, dist, rate, wikidata, locationName, lat, long
       locationId = locationExists._id
       console.log(locationExists);
       console.log(locationId);
+      refetch();
       saveFeature(locationId)
     }
 
