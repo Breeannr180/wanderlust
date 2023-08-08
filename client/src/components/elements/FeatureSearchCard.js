@@ -80,9 +80,9 @@ const FeatureSearchCard = ({ name, dist, rate, wikidata, locationName, lat, long
     if (!locationExists) {
       addNewLocation()
     } else {
-      console.log("location exist");
-      refetch();
+      locationId = locationExists._id
       saveFeature(locationId)
+      refetch();
     }
 
   };
