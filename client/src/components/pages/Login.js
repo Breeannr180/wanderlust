@@ -33,7 +33,7 @@ const Login = () => {
       const { data } = await addUser({
         variables: { username, password },
       });
-      if (data.addUser.token === 0) {
+      if (!data.addUser.token) {
         console.log('username taken');
         return;
       }
@@ -91,7 +91,7 @@ const Login = () => {
             </form>
 
             <button className='text-blue-500 font-semibold'
-            type='button' onClick={handleToggle}>
+              type='button' onClick={handleToggle}>
               Sign Up Instead
             </button>
           </div>
@@ -124,9 +124,9 @@ const Login = () => {
               </div>
             </form>
             <button className='text-blue-500 font-semibold'
-            type='button' 
-            onClick={handleToggle}>
-            Already have an account? Log In Here
+              type='button'
+              onClick={handleToggle}>
+              Already have an account? Log In Here
             </button>
           </div>
         )}
