@@ -12,7 +12,6 @@ const LocationResults = (props) => {
 
 
   const handleFeatureSearch = async () => {
-    setSearched(true)
     try {
       const response = await fetch('/api/opentripmap/features', {
         method: 'POST',
@@ -27,6 +26,7 @@ const LocationResults = (props) => {
       });
 
       const data = await response.json();
+      if (data) { setSearched(true) }
       const temp = data.features.filter(
         (feature) => feature.properties.rate > 0 && feature.properties.wikidata
       );
