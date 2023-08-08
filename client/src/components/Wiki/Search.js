@@ -4,10 +4,10 @@ import LocationResults from './LocationResults';
 const Search = () => {
   const [query, setQuery] = useState('');
   const [openTripMapData, setOpenTripMapData] = useState(null);
-  // const [destinationData, setDestinationData] = useState({});
 
   const handleSearch = async () => {
     try {
+      if (!query) return;
       const response = await fetch('/api/opentripmap/destination', {
         method: 'POST',
         body: JSON.stringify({ location: query }),
@@ -18,10 +18,7 @@ const Search = () => {
 
       const data = await response.json();
       console.log('OpenTripMap data:', data);
-      // setDestinationData(data);
-
       setOpenTripMapData(data);
-      // }
     } catch (error) {
       console.error('Error fetching OpenTripMap data:', error);
     }
@@ -42,12 +39,11 @@ const Search = () => {
             onChange={(e) => setQuery(e.target.value)}
           />
 
-          <button className='btn' onClick={handleSearch}>
+          <button className='btn btn-primary' onClick={handleSearch}>
             Search
           </button>
         </div>
       </div>
-      {/* {destinationData.name} */}
       {openTripMapData ? (
         <div className='card card-bordered'>
           {openTripMapData.status === 'OK' ? (
