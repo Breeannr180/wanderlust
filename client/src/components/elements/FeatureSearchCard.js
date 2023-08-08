@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries';
 import { ADD_LOCATION, ADD_FEATURE } from '../../utils/mutations';
@@ -12,6 +13,7 @@ const FeatureSearchCard = ({ name, dist, rate, wikidata, locationName, lat, long
   const [addFeature] = useMutation(ADD_FEATURE);
 
   const userId = localStorage.getItem('userId');
+  const wikidataUrl = `https://www.wikidata.org/wiki/${wikidata}`;
 
   const { loading, error, data, refetch } = useQuery(QUERY_USER, {
     variables: { userId: userId },
@@ -76,13 +78,9 @@ const FeatureSearchCard = ({ name, dist, rate, wikidata, locationName, lat, long
     }
     let locationExists = savedLocations.find(location => location.name === locationName)
     if (!locationExists) {
-      console.log("location not exist");
       addNewLocation()
     } else {
       console.log("location exist");
-      locationId = locationExists._id
-      console.log(locationExists);
-      console.log(locationId);
       refetch();
       saveFeature(locationId)
     }
@@ -97,7 +95,11 @@ const FeatureSearchCard = ({ name, dist, rate, wikidata, locationName, lat, long
           <div className='content'>
             <p>Distance: {dist}</p>
             <p>Rating: {rate}</p>
-            <p>Wikidata: {wikidata}</p>
+            <Link to={wikidataUrl}>
+              <button className='btn btn-primary my-3'>
+                View on Wikidata
+              </button>
+            </Link>
             {/* //button to save feature */}
             {!isSaved ? (
               <button className='btn btn-secondary' onClick={saveLocation}>
