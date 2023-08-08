@@ -37,7 +37,6 @@ const FeatureSearchCard = ({ name, dist, rate, wikidata, locationId }) => {
             <p>Distance: {dist}</p>
             <p>Rating: {rate}</p>
             <p>Wikidata: {wikidata}</p>
-            <WikidataImage wikidata={wikidata} />
             {/* //button to save feature */}
             {!isSaved ? (
               <button className='btn btn-secondary' onClick={saveFeature}>
