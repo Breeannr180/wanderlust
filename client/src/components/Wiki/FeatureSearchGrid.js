@@ -23,7 +23,7 @@ const FeatureSearchGrid = (props) => {
         </div>
       ) : (
         <div>
-          <h1>No features found!</h1>
+          <h1>Search above for features</h1>
         </div>
       )}
     </div>

@@ -71,8 +71,8 @@ export const REMOVE_USER = gql`
 `;
 
 export const REMOVE_LOCATION = gql`
-  mutation removeUser($userId: ID!, $locationId: ID!) {
-    removeUser(userId: $userId, locationId: $locationId) {
+  mutation removeLocation($userId: ID!, $locationId: ID!) {
+    removeLocation(userId: $userId, locationId: $locationId) {
       location {
         _id
         name
@@ -82,8 +82,8 @@ export const REMOVE_LOCATION = gql`
 `;
 
 export const REMOVE_FEATURE = gql`
-  mutation removeUser($locationId: ID!, $featureId: ID!) {
-    removeUser(locationId: $locationId, featureId: $featureId) {
+  mutation removeFeature($locationId: ID!, $featureId: ID!) {
+    removeFeature(locationId: $locationId, featureId: $featureId) {
       feature {
         _id
         name
