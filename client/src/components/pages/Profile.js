@@ -30,7 +30,7 @@ const Profile = () => {
   return (
     <div>
       <div className='card-content'>
-        <div className='content'>
+        <div className='content container'>
           {savedLocations.length < 1 ? (
             <h1>No saved locations yet!</h1>
           ) : (

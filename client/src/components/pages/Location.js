@@ -19,23 +19,27 @@ const Location = () => {
     console.log(error);
   }
 
+  const locationName = data.location.name
   const savedFeatures = data.location.savedFeatures;
 
   return (
     <div>
       <div className='card-content'>
+        <h1 className='text-4xl ms-5 mb-5'>Saved Features for {locationName}</h1>
         <div className='content'>
           {savedFeatures.length < 1 ? (
             <h1>No saved features yet!</h1>
           ) : (
-            <div>
+            <div className='grid grid-cols-3 gap-4'>
               {savedFeatures.map((feature) => (
                 <FeatureCard
                   key={feature._id}
+                  id={feature._id}
                   name={feature.name}
                   dist={feature.dist}
                   rate={feature.rate}
                   wikidata={feature.wikidata}
+                  locationId={locationId}
                 />
               ))}
             </div>
