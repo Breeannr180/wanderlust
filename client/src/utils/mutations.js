@@ -33,13 +33,7 @@ export const ADD_LOCATION = gql`
 `;
 
 export const ADD_FEATURE = gql`
-  mutation addFeature(
-    $locationId: ID!
-    $name: String!
-    $dist: Int!
-    $rate: Int!
-    $wikidata: String!
-  ) {
+  mutation addFeature($locationId: ID!, $name: String!, $dist: Float!, $rate: Int!, $wikidata: String!) {
     addFeature(
       locationId: $locationId
       name: $name

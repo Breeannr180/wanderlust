@@ -3,7 +3,7 @@ import React from 'react';
 import FeatureSearchCard from '../elements/FeatureSearchCard';
 
 const FeatureSearchGrid = (props) => {
-  const { featureArray, locationId } = props;
+  const { featureArray } = props;
   return (
     <div className='container'>
       {0 < featureArray.length ? (
@@ -15,7 +15,9 @@ const FeatureSearchGrid = (props) => {
               dist={feature.properties.dist}
               rate={feature.properties.rate}
               wikidata={feature.properties.wikidata}
-              locationId={locationId}
+              locationName={props.locationName}
+              lat={props.lat}
+              long={props.long}
             />
           ))}
         </div>
