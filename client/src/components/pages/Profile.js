@@ -34,7 +34,7 @@ const Profile = () => {
           {savedLocations.length < 1 ? (
             <h1>No saved locations yet!</h1>
           ) : (
-            <div className='grid grid-cols-4 gap-2'>
+            <div className='grid grid-cols-2 gap-2'>
               {savedLocations.map((location) => (
                 <LocationCard
                   key={location._id}
