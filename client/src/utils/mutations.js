@@ -84,10 +84,8 @@ export const REMOVE_LOCATION = gql`
 export const REMOVE_FEATURE = gql`
   mutation removeFeature($locationId: ID!, $featureId: ID!) {
     removeFeature(locationId: $locationId, featureId: $featureId) {
-      feature {
-        _id
-        name
-      }
+       _id
+       name
     }
   }
 `;
