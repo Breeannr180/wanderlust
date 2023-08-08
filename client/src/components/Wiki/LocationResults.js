@@ -8,12 +8,11 @@ const LocationResults = (props) => {
   const [kind, setKind] = useState('amusements');
   // const [openTripMapData, setOpenTripMapData] = useState([]);
   const [featureArray, setFeatures] = useState([]);
-  const [locationId, setLocationId] = useState('');
-  const [isSaved, setIsSaved] = useState(false);
+  const [searched, setSearched] = useState(false);
 
-  const [addLocation] = useMutation(ADD_LOCATION);
 
   const handleFeatureSearch = async () => {
+    setSearched(true)
     try {
       const response = await fetch('/api/opentripmap/features', {
         method: 'POST',
@@ -56,13 +55,25 @@ const LocationResults = (props) => {
         <button className='btn btn-primary' onClick={handleFeatureSearch}>
           Search for interesting features nearby
         </button>
-        <FeatureSearchGrid
-          featureArray={featureArray}
-          locationName={props.name}
-          lat={props.lat}
-          long={props.lon}
-        />
       </div>
+      {searched ? (
+        <div>
+          {0 < featureArray.length ? (
+            <FeatureSearchGrid
+              featureArray={featureArray}
+              locationName={props.name}
+              lat={props.lat}
+              long={props.lon}
+            />
+          ) : (
+            <div>
+              <h1>Data not found; Try another search</h1>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div>Search above for features</div>
+      )}
     </div>
   );
 };
