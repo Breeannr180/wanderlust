@@ -46,7 +46,7 @@ function App() {
             <Header />
           </div>
           {/* Container for the carousel */}
-          <div className='carousel-container'>/</div>
+          <div className='carousel-container'></div>
           <div className='main-content h-screen'>
             <Routes>
               <Route exact path='/' element={<Home />} />
