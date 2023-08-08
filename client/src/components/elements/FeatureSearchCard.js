@@ -40,7 +40,6 @@ const FeatureSearchCard = ({ name, dist, rate, wikidata, locationName, lat, long
       });
       if (data) {
         setIsSaved(true);
-        console.log(data);
       }
     } catch (error) {
       console.error('Error saving feature:', error);
