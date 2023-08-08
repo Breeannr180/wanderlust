@@ -78,7 +78,7 @@ const LocationResults = (props) => {
         <button className='btn btn-primary' onClick={handleFeatureSearch}>
           Search for interesting features nearby
         </button>
-        {!isSaved ? (
+        {/* {!isSaved ? (
           <button className='btn btn-secondary' onClick={saveLocation}>
             Save this location
           </button>
@@ -86,10 +86,12 @@ const LocationResults = (props) => {
           <button className='btn btn-secondary btn-disabled'>
             Location Saved!
           </button>
-        )}
+        )} */}
         <FeatureSearchGrid
           featureArray={featureArray}
-          locationId={locationId}
+          locationName={props.name}
+          lat={props.lat}
+          long={props.lon}
         />
       </div>
     </div>
