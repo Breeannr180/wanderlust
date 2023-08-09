@@ -124,7 +124,7 @@ const Login = () => {
             </form>
             <button className='text-blue-500 font-semibold'
               type='button'
-              onClick={handleToggle}>=
+              onClick={handleToggle}>
               Already have an account? Log In Here
             </button>
           </div>
