@@ -29,7 +29,7 @@ const LocationCard = ({ name, locationId }) => {
 
   return (
     <div className='card'>
-      <div className='card bg-info card-bordered text-neutral'>
+      <div className='card card-bordered bg-neutral-content text-neutral flex flex-wrap content-center'>
         <div className='card-actions justify-end p-2'>
           <button
             className='btn btn-square btn-outline btn-error'
@@ -51,9 +51,9 @@ const LocationCard = ({ name, locationId }) => {
             </svg>
           </button>
         </div>
-        <div className='flex flex-wrap content-center card-body'>
-          <h1 className='card-title'>{name}</h1>
-          <div className='card-content'>
+        <div className='text-center items-center card-body'>
+          <h1 className='card-title text-3xl'>{name}</h1>
+          <div className='card-content text-center'>
             <div className='content'>
               <Link to={`/location/${locationId}`}>
                 <button className='btn btn-outline'>See Saved Features</button>
