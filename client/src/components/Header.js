@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header className='header'>
       <div className='header-content'>
-        <nav className='navbar bg-neutral'>
+        <nav className='navbar bg-neutral flex flex-wrap'>
           <div className='navbar-start'>
             <img
               src={logo}
