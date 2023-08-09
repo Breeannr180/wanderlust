@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_LOCATIONS } from '../../utils/queries';
@@ -11,13 +11,6 @@ const Location = () => {
     variables: { locationId: locationId },
   });
 
-  const locationName = data.location.name
-  const savedFeatures = data.location.savedFeatures;
-
-  useEffect(() => {
-    refetch()
-  }, [savedFeatures]);
-
   if (loading) {
     return <h1>Loading...</h1>;
   }
@@ -26,6 +19,9 @@ const Location = () => {
     console.log(error);
   }
 
+  const locationName = data.location.name
+  const savedFeatures = data.location.savedFeatures;
+  refetch()
 
   return (
     <div>
