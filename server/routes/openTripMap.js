@@ -3,7 +3,7 @@ const axios = require('axios');
 const APIkey = process.env.OPEN_TRIP_API_KEY;
 
 async function getOpenTripMapData(query) {
-  const apiUrl = `https://api.opentripmap.com/0.1/en/places/geoname?name=${query}&apikey=5ae2e3f221c38a28845f05b6ea3ff1b8d0097fe37c7a818fa11a6e58`;
+  const apiUrl = `https://api.opentripmap.com/0.1/en/places/geoname?name=${query}&apikey=${APIkey}`;
   try {
     const response = await axios.get(apiUrl);
 
@@ -19,7 +19,7 @@ async function getOpenTripMapData(query) {
 async function getDestinationData(lon, lat, kind) {
   try {
     // Fetch place data based on the destination name
-    const placeUrl = `https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=${lon}&lat=${lat}&kinds=${kind}&rate=3&limit=15&apikey=5ae2e3f221c38a28845f05b6ea3ff1b8d0097fe37c7a818fa11a6e58`;
+    const placeUrl = `https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=${lon}&lat=${lat}&kinds=${kind}&rate=3&limit=15&apikey=${APIkey}`;
     const placeResponse = await axios.get(placeUrl);
     const placeData = placeResponse.data;
     return placeData;
