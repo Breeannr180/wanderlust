@@ -10,7 +10,7 @@ Travel Wanderlust is a comprehensive web application that serves as your ultimat
 - Destination Details: Each destination page displays a wealth of information about the location, such as its name, description, and a gallery of images that showcase the beauty of the place.
 - User Authentication: Travel Wanderlust includes user registration and login functionality, allowing users to create accounts and log in to access additional features or contribute to the platform.
 
-Check out our website [here](https://travel-wanderlust-e4949a0bbd5c.herokuapp.com/)!
+Check out our website [here](https://travelwanderlust-50eb12359e0a.herokuapp.com/)!
 
 
 ![screenshot](./images/Screenshot%201.png)
